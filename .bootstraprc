@@ -2,7 +2,8 @@
 bootstrapVersion: 4
 useFlexbox: true
 extractStyles: true
-preBootstrapCustomizations: styles/bootstrap.scss
+preBootstrapCustomizations: styles/pre-bootstrap.scss
+bootstrapCustomizations: styles/bootstrap.scss
 appStyles: styles/index.scss
 
 styleLoaders:

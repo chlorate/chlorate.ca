@@ -1,17 +1,15 @@
-$brand-primary: #306580;
+html, body {
+	height: 100%;
+	font-size: 17px;
+	overflow: auto;
+	text-shadow: 1px 0 black, 0 1px black, 1px 1px black;
+}
 
-$body-bg: black;
-$body-color: #bbb;
+.card,
+.btn:not(.btn-link) {
+	box-shadow: 0 0 0 1px black;
+}
 
-$link-hover-color: #29576e;
-$link-hover-decoration: none;
-
-$font-family-sans-serif: retro16, arial, sans-serif;
-
-$headings-font-weight: bold;
-
-$card-spacer-x: 0.75rem;
-$card-spacer-y: 0.5rem;
-$card-border-color: #333;
-$card-cap-bg: #181818;
-$card-bg: #111;
+a.btn:not(.btn-link):focus {
+	color: #fff;
+}
