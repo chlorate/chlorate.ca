@@ -7,5 +7,13 @@ jobs:
       - checkout
       - run:
           name: Install Hugo
-          command: apt install hugo
-      - run: make
+          command: wget --output-document - https://github.com/gohugoio/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-64bit.tar.gz | tar --extract --gzip
+      - run:
+          name: Install minify
+          command: wget --output-document - https://bin.equinox.io/c/dhgbqpS8Bvy/minify-stable-linux-amd64.tgz | tar --extract --gzip
+      - run:
+          name: Update $PATH
+          command: export PATH=$PATH:.
+      - run:
+          name: Build
+          command: make
