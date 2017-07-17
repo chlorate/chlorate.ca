@@ -1,11 +1,11 @@
 version: 2
-  jobs:
-    build:
-      docker:
-        - image: circleci/node:8.1.4
-      steps:
-        - checkout
-        - run:
-            name: Install Hugo
-            command: apt install hugo
-        - run: make
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.1.4
+    steps:
+      - checkout
+      - run:
+          name: Install Hugo
+          command: apt install hugo
+      - run: make
