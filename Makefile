@@ -6,6 +6,7 @@ DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
 build: $(DEPS)
 	$(WEBPACK) -p
 	$(HUGO)
+	minify --recursive --output dist dist
 
 .PHONY: watch
 watch: $(DEPS)
