@@ -1,0 +1,4 @@
+node_modules
+site/data/static.json
+site/static
+styles/*.ttf

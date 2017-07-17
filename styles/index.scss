@@ -1,0 +1,20 @@
+@font-face {
+	font-family: retro16;
+	src: url(retro16.ttf);
+}
+
+html, body {
+	height: 100%;
+	font-size: 17px;
+}
+
+.container-home {
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.row {
+		width: 36em;
+	}
+}
