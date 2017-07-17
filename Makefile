@@ -1,17 +1,19 @@
 HUGO=hugo --source site
 WEBPACK=node_modules/.bin/webpack
-FONTS=styles/retro8.ttf styles/retro16.ttf
+DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
 
 .PHONY: build
-build: $(FONTS)
+build: $(DEPS)
+	$(WEBPACK)
+	$(HUGO) --destination ../dist
 
 .PHONY: watch
-watch: node_modules site/static/static $(FONTS)
+watch: $(DEPS)
 	$(WEBPACK) --watch & $(HUGO) server
 
 .PHONY: clean
 clean: 
-	rm --recursive --force site/data/static.json site/public site/static
+	rm --recursive --force dist site/data/static.json site/static styles/*.ttf
 
 node_modules: package.json
 	npm install
