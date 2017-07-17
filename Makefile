@@ -13,7 +13,7 @@ watch: $(DEPS)
 
 .PHONY: clean
 clean: 
-	rm --recursive --force dist site/data/static.json site/static styles/*.ttf
+	rm --recursive --force dist node_modules site/data/static.json site/static styles/*.ttf
 
 node_modules: package.json
 	npm install
