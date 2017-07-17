@@ -1,11 +1,7 @@
-@font-face {
-	font-family: retro16;
-	src: url(retro16.ttf);
-}
-
 html, body {
 	height: 100%;
 	font-size: 17px;
+	overflow: auto;
 }
 
 .container-home {
@@ -18,3 +14,5 @@ html, body {
 		width: 36em;
 	}
 }
+
+@import "fonts";

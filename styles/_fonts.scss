@@ -1,0 +1,24 @@
+@font-face {
+	font-family: retro16;
+	src: url(retro16.ttf);
+}
+
+@font-face {
+	font-family: retro8;
+	src: url(retro8.ttf);
+}
+
+.page-fonts {
+	.container {
+		max-width: 33rem;
+	}
+
+	.card-text {
+		word-wrap: break-word;
+	}
+
+	.font-card-retro8 {
+		font-family: retro8;
+		font-size: 16px;
+	}
+}
