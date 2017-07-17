@@ -14,5 +14,11 @@ jobs:
           working_directory: ~/bin
           command: wget --output-document - https://bin.equinox.io/c/dhgbqpS8Bvy/minify-stable-linux-amd64.tgz | tar --extract --gzip
       - run:
+          name: Install Node dependencies
+          command: make node_modules
+      - run:
+          name: Download fonts
+          command: make styles/retro8.ttf styles/retro16.ttf
+      - run:
           name: Build
-          command: PATH=$PATH:~/bin make
+          command: PATH=$PATH:~/bin make build
