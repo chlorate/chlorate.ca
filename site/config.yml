@@ -1,3 +1,8 @@
 baseURL: https://chlorate.ca
+disableHugoGeneratorInject: true
+disableKinds: [RSS]
+enableRobotsTXT: true
 languageCode: en-ca
-title: Chlorate
+publishDir: ../dist
+taxonomies: []
+title: chlorate.ca
