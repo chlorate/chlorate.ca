@@ -5,4 +5,7 @@ version: 2
         - image: circleci/node:8.1.4
       steps:
         - checkout
+        - run:
+            name: Install Hugo
+            command: apt install hugo
         - run: make
