@@ -22,3 +22,21 @@ jobs:
       - run:
           name: Build
           command: PATH=$PATH:~/bin make build
+  deploy:
+    docker:
+      - image: circleci/python:3.6.1
+    steps:
+      - run:
+          name: Install awscli
+          command: pip install --upgrade --user awscli
+      - deploy:
+          name: Deploy to S3
+          command: aws s3 sync dist s3://new.chlorate.ca
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
