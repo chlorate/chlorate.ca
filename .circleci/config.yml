@@ -23,8 +23,8 @@ jobs:
           name: Build
           command: PATH=$PATH:~/bin make build
       - persist_to_workspace:
-          root: dist
-          paths: "*"
+          root: .
+          paths: dist
   deploy:
     docker:
       - image: circleci/python:3.6.1
@@ -33,7 +33,7 @@ jobs:
           name: Install awscli
           command: pip install --upgrade --user awscli
       - attach_workspace:
-          at: dist
+          at: .
       - deploy:
           name: Deploy to S3
           command: PATH=$PATH:~/.local/bin aws s3 sync dist s3://new.chlorate.ca
