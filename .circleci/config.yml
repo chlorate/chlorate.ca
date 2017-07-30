@@ -30,13 +30,13 @@ jobs:
       - image: circleci/python:3.6.1
     steps:
       - run:
-          name: Install awscli
-          command: pip install --upgrade --user awscli
+          name: Install s3cmd
+          command: pip install --upgrade --user s3cmd
       - attach_workspace:
           at: .
       - deploy:
           name: Deploy to S3
-          command: PATH=$PATH:~/.local/bin aws s3 sync dist s3://new.chlorate.ca --delete
+          command: PATH=$PATH:~/.local/bin s3cmd sync --delete-removed dist s3://new.chlorate.ca
 workflows:
   version: 2
   build-deploy:
