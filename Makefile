@@ -1,6 +1,5 @@
 HUGO=hugo --source site
 WEBPACK=node_modules/.bin/webpack
-UNCSS=node_modules/.bin/uncss
 
 DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
 
