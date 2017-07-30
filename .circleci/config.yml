@@ -27,7 +27,7 @@ jobs:
           paths: dist
   deploy:
     docker:
-      - image: circleci/python:3.6.1
+      - image: circleci/python:2.7.13
     steps:
       - run:
           name: Install s3cmd
