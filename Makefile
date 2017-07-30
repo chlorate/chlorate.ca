@@ -9,7 +9,7 @@ build: $(DEPS)
 	$(WEBPACK) -p
 	rm site/static/static/styles.*.js
 	$(HUGO)
-	for file in dist/static/*.css; do $(UNCSS) --noBanner --stylesheets "file://$$(realpath "$$file")" dist/**/*.html > temp.css && mv temp.css "$$file"; done
+	for file in dist/static/*.css; do $(UNCSS) --noBanner --stylesheets "file://$$(realpath "$$file")" dist/*.html dist/**/*.html > temp.css && mv temp.css "$$file"; done
 	minify --recursive --output dist dist
 
 .PHONY: watch
