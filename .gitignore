@@ -1,5 +1,5 @@
 dist
 node_modules
 site/data/static.json
-site/static
+site/static/static
 styles/*.ttf

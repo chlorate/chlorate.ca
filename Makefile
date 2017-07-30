@@ -5,6 +5,7 @@ DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
 .PHONY: build
 build: $(DEPS)
 	$(WEBPACK) -p
+	rm site/static/static/styles.*.js
 	$(HUGO)
 	minify --recursive --output dist dist
 

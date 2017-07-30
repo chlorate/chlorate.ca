@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.1.4
+    steps:
+      - checkout
+      - run:
+          name: Install Hugo
+          working_directory: ~/bin
+          command: wget --output-document - https://github.com/gohugoio/hugo/releases/download/v0.25.1/hugo_0.25.1_Linux-64bit.tar.gz | tar --extract --gzip
+      - run:
+          name: Install minify
+          working_directory: ~/bin
+          command: wget --output-document - https://bin.equinox.io/c/dhgbqpS8Bvy/minify-stable-linux-amd64.tgz | tar --extract --gzip
+      - run:
+          name: Install Node dependencies
+          command: make node_modules
+      - run:
+          name: Download fonts
+          command: make styles/retro8.ttf styles/retro16.ttf
+      - run:
+          name: Build
+          command: PATH=$PATH:~/bin make build
+      - persist_to_workspace:
+          root: .
+          paths: dist
+  deploy:
+    docker:
+      - image: circleci/python:2.7.13
+    steps:
+      - run:
+          name: Install s3cmd
+          command: pip install --upgrade --user s3cmd
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Deploy to S3
+          command: PATH=$PATH:~/.local/bin s3cmd sync --delete-removed --no-progress dist s3://new.chlorate.ca
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
