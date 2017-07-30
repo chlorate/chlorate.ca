@@ -9,6 +9,7 @@ appStyles: styles/index.scss
 styleLoaders:
   - style
   - css
+  - postcss
   - sass
 
 styles:
