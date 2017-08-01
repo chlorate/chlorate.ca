@@ -1,18 +1,18 @@
 HUGO=hugo --source site
 WEBPACK=node_modules/.bin/webpack
 
-DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
+EXTERNAL_FILES=styles/retro8.ttf styles/retro16.ttf
 
 .PHONY: build
-build: $(DEPS)
+build: $(EXTERNAL_FILES) node_modules
 	$(WEBPACK) -p
 	rm site/static/static/styles.*.js
 	$(HUGO)
 	minify --recursive --output dist dist
 
 .PHONY: watch
-watch: $(DEPS)
-	$(WEBPACK) --watch & $(HUGO) server
+watch: $(EXTERNAL_FILES) site/data/static.json
+	$(WEBPACK) -d --watch & $(HUGO) server
 
 .PHONY: clean
 clean: 
@@ -26,8 +26,8 @@ node_modules: package.json
 	npm install
 	touch $@
 
-site/static/static:
-	mkdir --parents $@
+site/data/static.json: node_modules styles/retro8.ttf styles/retro16.ttf
+	$(WEBPACK) -d
 
 styles/retro8.ttf:
 	curl https://raw.githubusercontent.com/chlorate/retro8/master/dist/retro8.ttf > $@
