@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 
@@ -42,6 +43,16 @@ module.exports = {
 		new ManifestPlugin({
 			fileName: "../../data/static.json",
 			publicPath: "/static/",
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "vendor",
+			minChunks: function(module) {
+				return (
+					module.context &&
+					module.context.indexOf("node_modules") >= 0 &&
+					!/(bootstrap|css|style)-loader/.test(module.context)
+				);
+			},
 		}),
 	],
 };

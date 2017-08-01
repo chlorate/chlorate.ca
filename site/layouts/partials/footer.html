@@ -1,5 +1,6 @@
 		{{ if .Params.script }}
 			<noscript>JavaScript is required for this page.</noscript>
+			<script src="{{ index .Site.Data.static "vendor.js" }}"></script>
 			<script src="{{ index .Site.Data.static (printf "%s.js" .Params.script) }}"></script>
 		{{ end }}
 	</body>
