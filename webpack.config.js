@@ -4,6 +4,7 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
 	entry: {
+		mm10rng: "./mm10rng/index.js",
 		styles: "bootstrap-loader",
 	},
 	output: {
