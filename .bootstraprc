@@ -15,6 +15,7 @@ styleLoaders:
 styles:
   buttons: true
   card: true
+  forms: true
   grid: true
   mixins: true
   normalize: true
