@@ -1,7 +1,7 @@
-import Inferno from "inferno";
+import {render} from "inferno";
 import FormComponent from "./form";
 
-Inferno.render(
+render(
 	<div class="row">
 		<div class="col-4">
 			<FormComponent />

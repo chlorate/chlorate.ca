@@ -1,8 +1,7 @@
-import Inferno from "inferno";
 import Component from "inferno-component";
 import stages from "./stages";
 
-export default class FormComponent extends Component {
+export default class FormComponent extends Component<any, any> {
 	render() {
 		var options = stages.map((stage, i) => <option value={i}>{stage.name}</option>);
 

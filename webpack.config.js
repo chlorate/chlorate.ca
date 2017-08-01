@@ -4,8 +4,11 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
 	entry: {
-		mm10rng: "./mm10rng/index.js",
+		mm10rng: "./mm10rng/index.tsx",
 		styles: "bootstrap-loader",
+	},
+	resolve: {
+		extensions: [".tsx", ".ts", ".js"],
 	},
 	output: {
 		filename: "[name].[chunkhash].js",
@@ -16,13 +19,12 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						presets: ["env"],
-						plugins: ["inferno"],
-					},
-				},
+				use: "babel-loader",
+			},
+			{
+				test: /\.tsx?$/,
+				exclude: /node_modules/,
+				use: ["babel-loader", "ts-loader"],
 			},
 			{
 				test: /\.ttf$/,
