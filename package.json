@@ -1,10 +1,17 @@
 {
 	"devDependencies": {
+		"babel-core": "6.25.0",
+		"babel-loader": "7.1.1",
+		"babel-plugin-inferno": "3.2.0",
+		"babel-preset-env": "1.6.0",
 		"bootstrap": "4.0.0-alpha.6",
 		"bootstrap-loader": "2.1.0",
 		"css-loader": "0.28.4",
 		"extract-text-webpack-plugin": "3.0.0",
 		"file-loader": "0.11.2",
+		"inferno": "3.7.0",
+		"inferno-component": "3.7.0",
+		"inferno-mobx": "3.7.0",
 		"node-sass": "4.5.3",
 		"postcss-loader": "2.0.6",
 		"postcss-uncss": "0.15.0",
