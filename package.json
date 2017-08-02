@@ -13,8 +13,6 @@
 		"inferno-component": "3.7.0",
 		"inferno-mobx": "3.7.0",
 		"node-sass": "4.5.3",
-		"postcss-loader": "2.0.6",
-		"postcss-uncss": "0.15.0",
 		"resolve-url-loader": "2.1.0",
 		"sass-loader": "6.0.6",
 		"style-loader": "0.18.2",
