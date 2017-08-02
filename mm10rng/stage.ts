@@ -1,4 +1,4 @@
-import {random} from "./util";
+import {suzakFenixWily2} from "./pattern";
 
 export interface Stage {
 	name: string;
@@ -28,24 +28,8 @@ export const stages: Stage[] = [
 			{
 				name: "Suzak & Fenix",
 				setupToDoor: 70,
-				pattern: suzakAndFenix,
+				pattern: suzakFenixWily2,
 			},
 		],
 	},
 ];
-
-function suzakAndFenix(seed: number): string {
-	const patternBit = 0x10000;
-	const doorToAttack = 221;
-	const horizToAttack = 196;
-
-	seed = random(seed, doorToAttack);
-	if (seed & patternBit) {
-		seed = random(seed, horizToAttack);
-		if (seed & patternBit) {
-			return "horizontal, horizontal";
-		}
-		return "horizontal, vertical";
-	}
-	return "vertical, horizontal";
-}
