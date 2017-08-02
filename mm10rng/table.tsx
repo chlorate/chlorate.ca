@@ -14,7 +14,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		}
 
 		let rows: any[] = [];
-		let seed = random(0, effectiveFrame)
+		let seed = random(state.stage.seed, effectiveFrame);
 		for (let i = 0; i < 60; i++) {
 			rows.push(
 				<tr>
