@@ -16,14 +16,31 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		let rows: any[] = [];
 		let seed = random(state.stage.seed, effectiveFrame);
 		for (let i = 0; i < 60; i++) {
-			rows.push(
-				<tr>
-					<td>{marshal(state.frame + i)}</td>
-					<td>{pad(seed.toString(16), 8)}</td>
-				</tr>
-			);
+			let cells: any[] = [
+				<td>{marshal(state.frame + i)}</td>,
+				<td>{pad(seed.toString(16), 8)}</td>
+			];
+			state.stage.bosses.forEach((boss) => {
+				cells.push(
+					<td>{marshal(state.frame + i + boss.setupToDoor)}</td>,
+					<td>{boss.pattern(random(seed, boss.setupToDoor))}</td>
+				)
+			});
+
+			rows.push(<tr>{cells}</tr>);
 			seed = random(seed);
 		}
+
+		let cells: any[] = [
+			<th>Time</th>,
+			<th>RNG value</th>
+		];
+		state.stage.bosses.forEach((boss) => {
+			cells.push(
+				<th>Door time</th>,
+				<th>{boss.name}</th>
+			);
+		});
 
 		return (
 			<div class="card">
@@ -31,8 +48,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 					<table class="table table-hover table-sm m-0">
 						<thead>
 							<tr>
-								<th>Time</th>
-								<th>RNG value</th>
+								{cells}
 							</tr>
 						</thead>
 						<tbody>
