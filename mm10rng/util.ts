@@ -4,7 +4,7 @@ const hundredthsToFrames = [0, 1, 1, 2, 2, 3, 4, 4, 5, 5];
 export function unmarshal(time: string): number {
 	let result = /^(?:(\d{1,2}):)?([0-5]?\d)(?:[:.](\d)(\d)?)?$/.exec(time);
 	if (!result) {
-		return null;
+		return 1;
 	}
 
 	let minutes = parseInt(result[1]) || 0;
