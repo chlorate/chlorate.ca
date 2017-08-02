@@ -27,7 +27,7 @@ export const stages: Stage[] = [
 		bosses: [
 			{
 				name: "Suzak & Fenix",
-				setupToDoor: 70,
+				setupToDoor: 68,
 				pattern: suzakFenixWily2,
 			},
 		],

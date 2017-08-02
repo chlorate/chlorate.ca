@@ -41,6 +41,23 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</p>
 						</div>
 						<div class="col-3">
+							<label for="input-lag">Input lag</label>
+							<input
+								type="number"
+								class="form-control"
+								id="input-lag"
+								aria-describedby="input-lag-help"
+								min="0"
+								max="999"
+								placeholder="0"
+								value={state.inputLag}
+								onInput={linkEvent(this, handleInputLagChange)}
+							/>
+							<p id="input-lag-help" class="form-text text-muted">
+								Dolphin: varies, 2-4 frames
+							</p>
+						</div>
+						<div class="col-3">
 							<label for="kills">Enemies killed</label>
 							<input
 								type="number"
@@ -81,12 +98,16 @@ export default class FormComponent extends Component<{state: State}, {}> {
 	}
 }
 
+function handleStageChange(instance: FormComponent, event) {
+	instance.props.state.stage = stages[event.target.value];
+}
+
 function handleTimeChange(instance: FormComponent, event) {
 	instance.props.state.frame = unmarshal(event.target.value);
 }
 
-function handleStageChange(instance: FormComponent, event) {
-	instance.props.state.stage = stages[event.target.value];
+function handleInputLagChange(instance: FormComponent, event) {
+	instance.props.state.inputLag = parseInt(event.target.value);
 }
 
 function handleKillsChange(instance: FormComponent, event) {
