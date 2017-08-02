@@ -9,14 +9,10 @@ let state = observable(new State());
 
 render(
 	<Provider state={state}>
-		<div class="row">
-			<div class="col-4">
-				<FormComponent />
-			</div>
-			<div class="col">
-				<TableComponent />
-			</div>
-		</div>
+		<main>
+			<FormComponent />
+			<TableComponent />
+		</main>
 	</Provider>,
 	document.getElementsByTagName("main")[0]
 );

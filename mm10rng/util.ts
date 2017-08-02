@@ -27,7 +27,7 @@ export function random(seed: number, iterations?: number): number {
 	if (iterations === undefined) {
 		iterations = 1;
 	}
-	while (iterations--) {
+	for (let i = 0; i < iterations; i++) {
 		seed = (seed * 0x343fd + 0x269EC3) & 0x7fffffff;
 	}
 	return seed;
