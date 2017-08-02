@@ -1,23 +1,29 @@
 import {random} from "./util";
+import {Grade, grades} from "./grade";
 
-enum SuzakFenixPatterns {
-	hh = "horizontal, horizontal",
-	hv = "horizontal, vertical",
-	vh = "vertical, horizontal"
+export interface Pattern {
+	name: string;
+	grade: Grade;
 }
 
-export function suzakFenixWily2(seed: number): string {
-	let pattern = suzakFenix(seed);
-	switch (pattern) {
-		case SuzakFenixPatterns.hv:
-			return "Best: " + pattern;
-		case SuzakFenixPatterns.vh:
-			return "Good: " + pattern;
-		case SuzakFenixPatterns.hh:
-			return "Bad: " + pattern;
-		default:
-			return pattern;
-	}
+enum SuzakFenixPatternName {
+	hh = "horizontal, horizontal",
+	hv = "horizontal, vertical",
+	vh = "vertical, horizontal",
+}
+
+const suzakFenixWily2Grades = {
+	[SuzakFenixPatternName.hh]: grades.worst,
+	[SuzakFenixPatternName.hv]: grades.best,
+	[SuzakFenixPatternName.vh]: grades.good,
+};
+
+export function suzakFenixWily2(seed: number): Pattern {
+	let name = suzakFenix(seed);
+	return {
+		grade: suzakFenixWily2Grades[name],
+		name: name,
+	};
 }
 
 function suzakFenix(seed: number): string {
@@ -29,9 +35,9 @@ function suzakFenix(seed: number): string {
 	if (seed & patternBit) {
 		seed = random(seed, horizToAttack);
 		if (seed & patternBit) {
-			return SuzakFenixPatterns.hh;
+			return SuzakFenixPatternName.hh;
 		}
-		return SuzakFenixPatterns.hv;
+		return SuzakFenixPatternName.hv;
 	}
-	return SuzakFenixPatterns.vh;
+	return SuzakFenixPatternName.vh;
 }

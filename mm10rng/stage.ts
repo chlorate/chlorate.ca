@@ -1,4 +1,4 @@
-import {suzakFenixWily2} from "./pattern";
+import {Pattern, suzakFenixWily2} from "./pattern";
 
 export interface Stage {
 	name: string;
@@ -10,7 +10,7 @@ export interface Stage {
 export interface Boss {
 	name: string;
 	setupToDoor: number;
-	pattern(seed: number): string;
+	pattern(seed: number): Pattern;
 }
 
 export const stages: Stage[] = [

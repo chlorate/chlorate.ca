@@ -1,0 +1,15 @@
+@mixin table-row-variant-custom($state, $background, $color) {
+	.table-#{$state} {
+		color: $color;
+
+		.table-hover & {
+			@include hover {
+				background-color: lighten($background, 5);
+			}
+		}
+	}
+}
+
+@include table-row-variant-custom(success, $state-success-bg, $state-success-text);
+@include table-row-variant-custom(warning, $state-warning-bg, $state-warning-text);
+@include table-row-variant-custom(danger, $state-danger-bg, $state-danger-text);

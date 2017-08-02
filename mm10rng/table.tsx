@@ -21,9 +21,12 @@ export default class TableComponent extends Component<{state: State}, {}> {
 				<td>{pad(seed.toString(16), 8)}</td>
 			];
 			state.stage.bosses.forEach((boss) => {
+				let pattern = boss.pattern(random(seed, boss.setupToDoor));
 				cells.push(
 					<td>{marshal(state.frame + i + boss.setupToDoor)}</td>,
-					<td>{boss.pattern(random(seed, boss.setupToDoor))}</td>
+					<td class={pattern.grade.class}>
+						{pattern.grade.name}: {pattern.name}
+					</td>
 				)
 			});
 
