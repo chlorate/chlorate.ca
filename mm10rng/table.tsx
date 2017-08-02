@@ -37,12 +37,12 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		}
 
 		let cells: any[] = [
-			<th>Time</th>,
-			<th>RNG value</th>
+			<th class="th-small">Time</th>,
+			<th class="th-small">RNG value</th>
 		];
 		state.stage.bosses.forEach((boss) => {
 			cells.push(
-				<th>Door time</th>,
+				<th class="th-small">Door time</th>,
 				<th>{boss.name}</th>
 			);
 		});
