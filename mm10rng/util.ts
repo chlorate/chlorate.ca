@@ -1,7 +1,7 @@
 const framesToHundredths = [0, 1, 3, 5, 6, 8];
 const hundredthsToFrames = [0, 1, 1, 2, 2, 3, 4, 4, 5, 5];
 
-export function unmarshal(time: string) {
+export function unmarshal(time: string): number {
 	let result = /^(?:(\d{1,2}):)?([0-5]?\d)(?:[:.](\d)(\d)?)?$/.exec(time);
 	if (!result) {
 		return null;
@@ -11,14 +11,15 @@ export function unmarshal(time: string) {
 	let seconds = parseInt(result[2]);
 	let tenths = parseInt(result[3]) || 0;
 	let hundredths = hundredthsToFrames[result[4]] || 0;
-	return minutes * 3600 + seconds * 60 + tenths * 6 + hundredths;
+	return minutes * 3600 + seconds * 60 + tenths * 6 + hundredths + 1;
 }
 
-export function marshal(frames) {
-	var minutes = Math.floor(frames / 3600);
-	var seconds = Math.floor((frames % 3600) / 60);
-	var tenths = Math.floor((frames % 60) / 6);
-	var hundredths = framesToHundredths[frames % 6];
+export function marshal(frame: number): string {
+	frame--;
+	var minutes = Math.floor(frame / 3600);
+	var seconds = Math.floor((frame % 3600) / 60);
+	var tenths = Math.floor((frame % 60) / 6);
+	var hundredths = framesToHundredths[frame % 6];
 	return pad(minutes, 2) + ":" + pad(seconds, 2) + "." + tenths + hundredths;
 }
 

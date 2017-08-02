@@ -9,7 +9,7 @@ export default class State {
 
 	constructor() {
 		this.stage = stages[0];
-		this.frame = 0;
+		this.frame = 1;
 		this.kills = 0;
 		this.iceBlocks = 0;
 	}
