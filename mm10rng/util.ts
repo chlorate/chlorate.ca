@@ -16,10 +16,10 @@ export function unmarshal(time: string): number {
 
 export function marshal(frame: number): string {
 	frame--;
-	var minutes = Math.floor(frame / 3600);
-	var seconds = Math.floor((frame % 3600) / 60);
-	var tenths = Math.floor((frame % 60) / 6);
-	var hundredths = framesToHundredths[frame % 6];
+	let minutes = Math.floor(frame / 3600);
+	let seconds = Math.floor((frame % 3600) / 60);
+	let tenths = Math.floor((frame % 60) / 6);
+	let hundredths = framesToHundredths[frame % 6];
 	return pad(minutes, 2) + ":" + pad(seconds, 2) + "." + tenths + hundredths;
 }
 
