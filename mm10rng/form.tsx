@@ -35,6 +35,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								placeholder="00:00.00"
 								value={marshal(state.frame)}
 								onChange={linkEvent(this, handleTimeChange)}
+								onKeyDown={linkEvent(this, handleTimeKeyDown)}
 							/>
 							<p id="time-help" class="form-text text-muted">
 								Time when you pressed right.
@@ -145,6 +146,28 @@ function handleStageChange(instance: FormComponent, event) {
 
 function handleTimeChange(instance: FormComponent, event) {
 	instance.props.state.frame = unmarshal(event.target.value);
+}
+
+enum Key {
+	pageUp = 33,
+	pageDown = 34,
+	up = 38,
+	down = 40,
+}
+
+const keyValues = {
+	[Key.pageUp]: 60,
+	[Key.pageDown]: -60,
+	[Key.up]: 1,
+	[Key.down]: -1,
+};
+
+function handleTimeKeyDown(instance: FormComponent, event) {
+	let value = keyValues[event.keyCode];
+	if (value) {
+		instance.props.state.frame += value;
+		event.preventDefault();
+	}
 }
 
 function handleInputLagChange(instance: FormComponent, event) {
