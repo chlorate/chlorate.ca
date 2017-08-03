@@ -100,7 +100,9 @@ export default class FormComponent extends Component<{state: State}, {}> {
 					<div class="row mb-3">
 						{state.stage.iceBlocks &&
 							<div class="col-3">
-								<label for="ice-blocks">Ice blocks destroyed</label>
+								<label for="ice-blocks">
+									Ice blocks destroyed
+								</label>
 								<input
 									type="number"
 									class="form-control"

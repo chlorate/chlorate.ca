@@ -58,15 +58,32 @@ export default class TableComponent extends Component<{state: State}, {}> {
 					<table class="table table-hover table-sm m-0">
 						<thead>
 							<tr>
-								<th class="th-small">Input time</th>
+								<th class="th-small">
+									Input time
+								</th>
 								{state.showRng &&
-									<th class="th-small">Input RNG value</th>
+									<th class="th-small">
+										Input RNG value
+									</th>
 								}
-								<th class="th-small">Door time</th>
+								<th class="th-small">
+									Door time
+									<div class="tip">
+										<div class="card">
+											<div class="card-block">
+												The frame when the first tile of the door disappears.
+											</div>
+										</div>
+									</div>
+								</th>
 								{state.showRng &&
-									<th class="th-small">Door RNG value</th>
+									<th class="th-small">
+										Door RNG value
+									</th>
 								}
-								<th>Pattern</th>
+								<th>
+									Pattern
+								</th>
 							</tr>
 						</thead>
 						<tbody>
