@@ -1,4 +1,4 @@
-import {Pattern, suzakFenixWily2} from "./pattern";
+import {Pattern, suzakFenixSolar, suzakFenixWily2} from "./pattern";
 
 export interface Stage {
 	name: string;
@@ -18,7 +18,13 @@ export const stages: Stage[] = [
 		name: "Solar Man",
 		seed: 8,
 		iceBlocks: false,
-		bosses: [],
+		bosses: [
+			{
+				name: "Suzak & Fenix",
+				setupToDoor: 151,
+				pattern: suzakFenixSolar,
+			},
+		],
 	},
 	{
 		name: "Wily Castle 2",

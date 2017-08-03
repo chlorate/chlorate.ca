@@ -21,7 +21,8 @@ export default class TableComponent extends Component<{state: State}, {}> {
 				<td>{pad(seed.toString(16), 8)}</td>
 			];
 			state.stage.bosses.forEach((boss) => {
-				let pattern = boss.pattern(random(seed, state.inputLag + boss.setupToDoor));
+				let doorSeed = random(seed, state.inputLag + boss.setupToDoor);
+				let pattern = boss.pattern(doorSeed);
 				cells.push(
 					<td>
 						{marshal(state.frame + i + state.inputLag + boss.setupToDoor)}

@@ -12,6 +12,10 @@ export const grades = {
 		name: "Good",
 		class: "table-warning",
 	},
+	bad: {
+		name: "Bad",
+		class: "table-danger",
+	},
 	worst: {
 		name: "Worst",
 		class: "table-danger",
