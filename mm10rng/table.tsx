@@ -12,6 +12,9 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		if (state.stage.iceBlocks) {
 			effectiveFrame += state.iceBlocks * 8;
 		}
+		if (state.stage.garinkou) {
+			effectiveFrame += state.garinkou;
+		}
 		if (state.stage.yonbain) {
 			effectiveFrame += state.yonbain * 2;
 		}

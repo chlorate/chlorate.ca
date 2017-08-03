@@ -92,6 +92,26 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								/>
 							</div>
 						}
+						{state.stage.garinkou &&
+							<div class="col-3">
+								<label for="garinkou">Garinkou jumps</label>
+								<input
+									type="number"
+									class="form-control"
+									id="garinkou"
+									aria-describedby="garinkou-help"
+									min="0"
+									max="999"
+									placeholder="0"
+									value={state.garinkou}
+									onInput={linkEvent(this, handleGarinkouChange)}
+								/>
+								<p id="garinkou-help" class="form-text text-muted">
+									Spike jumper enemy.
+									Add 1 every time this enemy jumps and is in the air.
+								</p>
+							</div>
+						}
 						{state.stage.yonbain &&
 							<div class="col-3">
 								<label for="yonbain">Yonbain moves</label>
@@ -137,6 +157,10 @@ function handleKillsChange(instance: FormComponent, event) {
 
 function handleIceBlocksChange(instance: FormComponent, event) {
 	instance.props.state.iceBlocks = parseInt(event.target.value);
+}
+
+function handleGarinkouChange(instance: FormComponent, event) {
+	instance.props.state.garinkou = parseInt(event.target.value);
 }
 
 function handleYonbainChange(instance: FormComponent, event) {

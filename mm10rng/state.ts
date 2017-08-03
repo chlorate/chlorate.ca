@@ -7,6 +7,7 @@ export default class State {
 	@observable kills: number;
 	@observable inputLag: number;
 	@observable iceBlocks: number;
+	@observable garinkou: number;
 	@observable yonbain: number;
 
 	constructor() {
@@ -15,6 +16,7 @@ export default class State {
 		this.kills = 0;
 		this.inputLag = 0;
 		this.iceBlocks = 0;
+		this.garinkou = 0;
 		this.yonbain = 0;
 	}
 }
