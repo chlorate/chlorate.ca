@@ -15,7 +15,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 			<form class="card mb-3">
 				<div class="card-block">
 					<div class="row">
-						<div class="col-3">
+						<div class="col-4">
 							<label for="stage">Stage</label>
 							<select
 								class="form-control"
@@ -25,7 +25,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								{options}
 							</select>
 						</div>
-						<div class="col-3">
+						<div class="col">
 							<label for="time">Input time</label>
 							<input
 								type="text"
@@ -43,7 +43,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								Use the Time Attack timer.
 							</p>
 						</div>
-						<div class="col-3">
+						<div class="col">
 							<label for="input-lag">Input lag</label>
 							<input
 								type="number"
@@ -60,7 +60,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								Dolphin: varies, 2-4 frames
 							</p>
 						</div>
-						<div class="col-3">
+						<div class="col">
 							<label for="kills">Enemies killed</label>
 							<input
 								type="number"

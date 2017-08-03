@@ -22,37 +22,26 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		let rows: any[] = [];
 		let seed = random(state.stage.seed, effectiveFrame);
 		for (let i = 0; i < 60; i++) {
-			let cells: any[] = [
-				<td>{marshal(state.frame + i)}</td>,
-				<td>{pad(seed.toString(16), 8)}</td>
-			];
-			state.stage.bosses.forEach((boss) => {
-				let doorSeed = random(seed, state.inputLag + boss.setupToDoor);
-				let pattern = boss.pattern(doorSeed);
-				cells.push(
+			let doorSeed = random(seed, state.inputLag + state.stage.setupToDoor);
+			let pattern = state.stage.pattern(doorSeed);
+			rows.push(
+				<tr>
 					<td>
-						{marshal(state.frame + i + state.inputLag + boss.setupToDoor)}
-					</td>,
+						{marshal(state.frame + i)}
+					</td>
+					<td>
+						{pad(seed.toString(16), 8)}
+					</td>
+					<td>
+						{marshal(state.frame + i + state.inputLag + state.stage.setupToDoor)}
+					</td>
 					<td class={pattern.grade.class}>
 						{pattern.grade.name}: {pattern.name}
 					</td>
-				)
-			});
-
-			rows.push(<tr>{cells}</tr>);
+				</tr>
+			);
 			seed = random(seed);
 		}
-
-		let cells: any[] = [
-			<th class="th-small">Input time</th>,
-			<th class="th-small">RNG value</th>
-		];
-		state.stage.bosses.forEach((boss) => {
-			cells.push(
-				<th class="th-small">Door time</th>,
-				<th>{boss.name}</th>
-			);
-		});
 
 		return (
 			<div class="card">
@@ -60,7 +49,10 @@ export default class TableComponent extends Component<{state: State}, {}> {
 					<table class="table table-hover table-sm m-0">
 						<thead>
 							<tr>
-								{cells}
+								<th class="th-small">Input time</th>
+								<th class="th-small">RNG value</th>
+								<th class="th-small">Door time</th>
+								<th>Pattern</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -6,42 +6,32 @@ export interface Stage {
 	iceBlocks: boolean;
 	garinkou: boolean;
 	yonbain: boolean;
-	bosses: Boss[];
-}
-
-export interface Boss {
-	name: string;
 	setupToDoor: number;
 	pattern(seed: number): Pattern;
 }
 
+const stageSeeds = {
+	solar: 8,
+	wily2: 10,
+};
+
 export const stages: Stage[] = [
 	{
-		name: "Solar Man",
-		seed: 8,
+		name: "Solar Man - Suzak & Fenix",
+		seed: stageSeeds.solar,
 		iceBlocks: false,
 		garinkou: false,
 		yonbain: true,
-		bosses: [
-			{
-				name: "Suzak & Fenix",
-				setupToDoor: 151,
-				pattern: suzakFenixSolar,
-			},
-		],
+		setupToDoor: 151,
+		pattern: suzakFenixSolar,
 	},
 	{
-		name: "Wily Castle 2",
-		seed: 10,
+		name: "Wily Castle 2 - Suzak & Fenix",
+		seed: stageSeeds.wily2,
 		iceBlocks: true,
 		garinkou: true,
 		yonbain: false,
-		bosses: [
-			{
-				name: "Suzak & Fenix",
-				setupToDoor: 68,
-				pattern: suzakFenixWily2,
-			},
-		],
+		setupToDoor: 68,
+		pattern: suzakFenixWily2,
 	},
 ];
