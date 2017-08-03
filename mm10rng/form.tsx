@@ -32,6 +32,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								class="form-control"
 								id="time"
 								aria-describedby="time-help"
+								maxlength="8"
 								placeholder="00:00.00"
 								value={marshal(state.frame)}
 								onChange={linkEvent(this, handleTimeChange)}
@@ -171,21 +172,21 @@ function handleTimeKeyDown(instance: FormComponent, event) {
 }
 
 function handleInputLagChange(instance: FormComponent, event) {
-	instance.props.state.inputLag = parseInt(event.target.value);
+	instance.props.state.inputLag = parseInt(event.target.value) || 0;
 }
 
 function handleKillsChange(instance: FormComponent, event) {
-	instance.props.state.kills = parseInt(event.target.value);
+	instance.props.state.kills = parseInt(event.target.value) || 0;
 }
 
 function handleIceBlocksChange(instance: FormComponent, event) {
-	instance.props.state.iceBlocks = parseInt(event.target.value);
+	instance.props.state.iceBlocks = parseInt(event.target.value) || 0;
 }
 
 function handleGarinkouChange(instance: FormComponent, event) {
-	instance.props.state.garinkou = parseInt(event.target.value);
+	instance.props.state.garinkou = parseInt(event.target.value) || 0;
 }
 
 function handleYonbainChange(instance: FormComponent, event) {
-	instance.props.state.yonbain = parseInt(event.target.value);
+	instance.props.state.yonbain = parseInt(event.target.value) || 0;
 }
