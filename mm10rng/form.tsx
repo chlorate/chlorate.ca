@@ -92,6 +92,26 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								/>
 							</div>
 						}
+						{state.stage.yonbain &&
+							<div class="col-3">
+								<label for="yonbain">Yonbain moves</label>
+								<input
+									type="number"
+									class="form-control"
+									id="yonbain"
+									aria-describedby="yonbain-help"
+									min="0"
+									max="999"
+									placeholder="0"
+									value={state.yonbain}
+									onInput={linkEvent(this, handleYonbainChange)}
+								/>
+								<p id="yonbain-help" class="form-text text-muted">
+									Eyeball enemy.
+									Add 1 every time this enemy moves (not when it divides).
+								</p>
+							</div>
+						}
 					</div>
 				</div>
 			</form>
@@ -117,4 +137,8 @@ function handleKillsChange(instance: FormComponent, event) {
 
 function handleIceBlocksChange(instance: FormComponent, event) {
 	instance.props.state.iceBlocks = parseInt(event.target.value);
+}
+
+function handleYonbainChange(instance: FormComponent, event) {
+	instance.props.state.yonbain = parseInt(event.target.value);
 }

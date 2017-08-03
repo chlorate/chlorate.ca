@@ -7,6 +7,7 @@ export default class State {
 	@observable kills: number;
 	@observable inputLag: number;
 	@observable iceBlocks: number;
+	@observable yonbain: number;
 
 	constructor() {
 		this.stage = stages[0];
@@ -14,5 +15,6 @@ export default class State {
 		this.kills = 0;
 		this.inputLag = 0;
 		this.iceBlocks = 0;
+		this.yonbain = 0;
 	}
 }
