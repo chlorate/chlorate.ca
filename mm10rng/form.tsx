@@ -14,7 +14,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 		return (
 			<form class="card mb-3">
 				<div class="card-block">
-					<div class="row">
+					<div class="row mb-3">
 						<div class="col-4">
 							<label for="stage">Stage</label>
 							<select
@@ -26,59 +26,78 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</select>
 						</div>
 						<div class="col">
-							<label for="time">Input time</label>
+							<label for="time">
+								Input time
+								<div class="tip">
+									<div class="card">
+										<div class="card-block">
+											<p>
+												According to the Time Attack timer.
+											</p>
+											<p class="m-0">
+												If you're in position for a manipulation, then this is the frame when you press right.
+											</p>
+										</div>
+									</div>
+								</div>
+							</label>
 							<input
 								type="text"
 								class="form-control"
 								id="time"
-								aria-describedby="time-help"
 								maxlength="8"
 								placeholder="00:00.00"
 								value={marshal(state.frame)}
 								onChange={linkEvent(this, handleTimeChange)}
 								onKeyDown={linkEvent(this, handleTimeKeyDown)}
 							/>
-							<p id="time-help" class="form-text text-muted">
-								Time when you pressed right.
-								Use the Time Attack timer.
-							</p>
 						</div>
 						<div class="col">
-							<label for="input-lag">Input lag</label>
+							<label for="input-lag">
+								Input lag
+								<div class="tip">
+									<div class="card">
+										<div class="card-block">
+											Dolphin input lag varies between 2 to 4 frames.
+										</div>
+									</div>
+								</div>
+							</label>
 							<input
 								type="number"
 								class="form-control"
 								id="input-lag"
-								aria-describedby="input-lag-help"
 								min="0"
 								max="999"
 								placeholder="0"
 								value={state.inputLag}
 								onInput={linkEvent(this, handleInputLagChange)}
 							/>
-							<p id="input-lag-help" class="form-text text-muted">
-								Dolphin: varies, 2-4 frames
-							</p>
 						</div>
 						<div class="col">
-							<label for="kills">Enemies killed</label>
+							<label for="kills">
+								Enemies killed
+								<div class="tip">
+									<div class="card">
+										<div class="card-block">
+											Only count enemies that can drop items.
+										</div>
+									</div>
+								</div>
+							</label>
 							<input
 								type="number"
 								class="form-control"
 								id="kills"
-								aria-describedby="kills-help"
 								min="0"
 								max="999"
 								placeholder="0"
 								value={state.kills}
 								onInput={linkEvent(this, handleKillsChange)}
 							/>
-							<p id="kills-help" class="form-text text-muted">
-								Only enemies that can drop items.
-							</p>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row mb-3">
 						{state.stage.iceBlocks &&
 							<div class="col-3">
 								<label for="ice-blocks">Ice blocks destroyed</label>
@@ -96,42 +115,53 @@ export default class FormComponent extends Component<{state: State}, {}> {
 						}
 						{state.stage.garinkou &&
 							<div class="col-3">
-								<label for="garinkou">Garinkou jumps</label>
+								<label for="garinkou">
+									Garinkou jumps
+									<div class="tip">
+										<div class="card">
+											<div class="card-block">
+												Spike jumper enemy.
+												Add 1 every time this enemy jumps.
+												A new jump begins 9 frames after it has landed.
+											</div>
+										</div>
+									</div>
+								</label>
 								<input
 									type="number"
 									class="form-control"
 									id="garinkou"
-									aria-describedby="garinkou-help"
 									min="0"
 									max="999"
 									placeholder="0"
 									value={state.garinkou}
 									onInput={linkEvent(this, handleGarinkouChange)}
 								/>
-								<p id="garinkou-help" class="form-text text-muted">
-									Spike jumper enemy.
-									Add 1 every time this enemy jumps and is in the air.
-								</p>
 							</div>
 						}
 						{state.stage.yonbain &&
 							<div class="col-3">
-								<label for="yonbain">Yonbain moves</label>
+								<label for="yonbain">
+									Yonbain moves
+									<div class="tip">
+										<div class="card">
+											<div class="card-block">
+												Eyeball enemy.
+												Add 1 every time this enemy moves towards you (not counting when it divides).
+											</div>
+										</div>
+									</div>
+								</label>
 								<input
 									type="number"
 									class="form-control"
 									id="yonbain"
-									aria-describedby="yonbain-help"
 									min="0"
 									max="999"
 									placeholder="0"
 									value={state.yonbain}
 									onInput={linkEvent(this, handleYonbainChange)}
 								/>
-								<p id="yonbain-help" class="form-text text-muted">
-									Eyeball enemy.
-									Add 1 every time this enemy moves (not when it divides).
-								</p>
 							</div>
 						}
 					</div>
