@@ -8,26 +8,28 @@ export default class TableComponent extends Component<{state: State}, {}> {
 	render() {
 		let state = this.props.state;
 
-		let effectiveFrame = state.frame + state.kills;
+		let extraIterations = state.kills;
 		if (state.stage.iceBlocks) {
-			effectiveFrame += state.iceBlocks * 8;
+			extraIterations += state.iceBlocks * 8;
 		}
 		if (state.stage.garinkou) {
-			effectiveFrame += state.garinkou;
+			extraIterations += state.garinkou;
 		}
 		if (state.stage.yonbain) {
-			effectiveFrame += state.yonbain * 2;
+			extraIterations += state.yonbain * 2;
 		}
 
 		let rows: any[] = [];
-		let seed = random(state.stage.seed, effectiveFrame);
-		for (let i = 0; i < 60; i++) {
+		let min = Math.max(1, state.frame - state.before);
+		let max = state.frame + state.after;
+		let seed = random(state.stage.seed, min + extraIterations);
+		for (let i = min; i <= max; i++) {
 			let doorSeed = random(seed, state.inputLag + state.stage.setupToDoor);
 			let pattern = state.stage.pattern(doorSeed);
 			rows.push(
 				<tr>
 					<td>
-						{marshal(state.frame + i)}
+						{marshal(i)}
 					</td>
 					{state.showRng &&
 						<td>
@@ -35,7 +37,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 						</td>
 					}
 					<td>
-						{marshal(state.frame + i + state.inputLag + state.stage.setupToDoor)}
+						{marshal(i + state.inputLag + state.stage.setupToDoor)}
 					</td>
 					{state.showRng &&
 						<td>

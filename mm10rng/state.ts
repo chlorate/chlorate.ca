@@ -10,6 +10,8 @@ export default class State {
 	@observable private _garinkou: number;
 	@observable private _yonbain: number;
 	@observable showRng: boolean;
+	@observable private _before: number;
+	@observable private _after: number;
 
 	constructor() {
 		this.stage = stages[0];
@@ -20,6 +22,8 @@ export default class State {
 		this.garinkou = 0;
 		this.yonbain = 0;
 		this.showRng = false;
+		this.before = 0;
+		this.after = 60;
 	}
 
 	get frame(): number { return this._frame; }
@@ -39,4 +43,10 @@ export default class State {
 
 	get yonbain(): number { return this._yonbain; }
 	set yonbain(n: number) { this._yonbain = Math.min(Math.max(n, 0), 999); }
+
+	get before(): number { return this._before; }
+	set before(n: number) { this._before = Math.min(Math.max(n, 0), 999); }
+
+	get after(): number { return this._after; }
+	set after(n: number) { this._after = Math.min(Math.max(n, 0), 999); }
 }

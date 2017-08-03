@@ -135,14 +135,45 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</div>
 						}
 					</div>
-					<div class="form-check m-0">
-						<label class="form-check-label">
+					<div class="row">
+						<div class="col form-inline">
+							<p class="form-control-static mr-2">Show</p>
 							<input
-								type="checkbox"
-								class="form-check-input"
-								onChange={linkEvent(this, handleShowRngChange)}
-							/> Show RNG values
-						</label>
+								type="number"
+								class="form-control mr-2"
+								min="0"
+								max="999"
+								placeholder="0"
+								value={state.before}
+								onInput={linkEvent(this, handleBeforeChange)}
+							/>
+							<p class="form-control-static mr-2">
+								frame{state.before === 1 ? "" : "s"} before and
+							</p>
+							<input
+								type="number"
+								class="form-control mr-2"
+								min="0"
+								max="999"
+								placeholder="0"
+								value={state.after}
+								onInput={linkEvent(this, handleAfterChange)}
+							/>
+							<p class="form-control-static mr-2">
+								frame{state.after === 1 ? "": "s"} after input time.
+							</p>
+						</div>
+						<div class="col-3 form-inline justify-content-end">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input
+										type="checkbox"
+										class="form-check-input"
+										onChange={linkEvent(this, handleShowRngChange)}
+									/> Show RNG values
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</form>
@@ -202,4 +233,12 @@ function handleYonbainChange(instance: FormComponent, event) {
 
 function handleShowRngChange(instance: FormComponent, event) {
 	instance.props.state.showRng = event.target.checked;
+}
+
+function handleBeforeChange(instance: FormComponent, event) {
+	instance.props.state.before = parseInt(event.target.value) || 0;
+}
+
+function handleAfterChange(instance: FormComponent, event) {
+	instance.props.state.after = parseInt(event.target.value) || 0;
 }
