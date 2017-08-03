@@ -9,6 +9,7 @@ export default class State {
 	@observable private _iceBlocks: number;
 	@observable private _garinkou: number;
 	@observable private _yonbain: number;
+	@observable showRng: boolean;
 
 	constructor() {
 		this.stage = stages[0];
@@ -18,6 +19,7 @@ export default class State {
 		this.iceBlocks = 0;
 		this.garinkou = 0;
 		this.yonbain = 0;
+		this.showRng = false;
 	}
 
 	get frame(): number { return this._frame; }

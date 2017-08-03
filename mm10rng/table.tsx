@@ -29,9 +29,11 @@ export default class TableComponent extends Component<{state: State}, {}> {
 					<td>
 						{marshal(state.frame + i)}
 					</td>
-					<td>
-						{pad(seed.toString(16), 8)}
-					</td>
+					{state.showRng &&
+						<td>
+							{pad(seed.toString(16), 8)}
+						</td>
+					}
 					<td>
 						{marshal(state.frame + i + state.inputLag + state.stage.setupToDoor)}
 					</td>
@@ -50,7 +52,9 @@ export default class TableComponent extends Component<{state: State}, {}> {
 						<thead>
 							<tr>
 								<th class="th-small">Input time</th>
-								<th class="th-small">RNG value</th>
+								{state.showRng &&
+									<th class="th-small">Input RNG value</th>
+								}
 								<th class="th-small">Door time</th>
 								<th>Pattern</th>
 							</tr>

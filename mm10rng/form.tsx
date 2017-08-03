@@ -135,6 +135,15 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</div>
 						}
 					</div>
+					<div class="form-check m-0">
+						<label class="form-check-label">
+							<input
+								type="checkbox"
+								class="form-check-input"
+								onChange={linkEvent(this, handleShowRngChange)}
+							/> Show RNG values
+						</label>
+					</div>
 				</div>
 			</form>
 		);
@@ -189,4 +198,8 @@ function handleGarinkouChange(instance: FormComponent, event) {
 
 function handleYonbainChange(instance: FormComponent, event) {
 	instance.props.state.yonbain = parseInt(event.target.value) || 0;
+}
+
+function handleShowRngChange(instance: FormComponent, event) {
+	instance.props.state.showRng = event.target.checked;
 }
