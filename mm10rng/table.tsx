@@ -37,7 +37,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		}
 
 		let cells: any[] = [
-			<th class="th-small">Time</th>,
+			<th class="th-small">Input time</th>,
 			<th class="th-small">RNG value</th>
 		];
 		state.stage.bosses.forEach((boss) => {

@@ -26,7 +26,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</select>
 						</div>
 						<div class="col-3">
-							<label for="time">Time</label>
+							<label for="time">Input time</label>
 							<input
 								type="text"
 								class="form-control"
@@ -37,6 +37,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								onChange={linkEvent(this, handleTimeChange)}
 							/>
 							<p id="time-help" class="form-text text-muted">
+								Time when you pressed right.
 								Use the Time Attack timer.
 							</p>
 						</div>
