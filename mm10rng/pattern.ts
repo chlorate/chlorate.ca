@@ -46,7 +46,7 @@ export function suzakFenixWily2(seed: number): Pattern {
 		if (seed & patternBit) {
 			return {
 				name: "horizontal, horizontal",
-				grade: grades.worst,
+				grade: grades.bad,
 			};
 		}
 		return {
