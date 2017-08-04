@@ -85,18 +85,18 @@ export function crabPuncher(seed: number): Pattern {
 	seed = random(seed, spawnToAttack);
 	if (seed & patternBit) {
 		return {
-			name: "bubbles";
+			name: "bubbles",
 			grade: grades.bad,
 		};
 	}
 	if (!counter) {
 		return {
-			name: "eye twitch, punches";
+			name: "eye twitch, punches",
 			grade: grades.good,
 		};
 	}
 	return {
-		name: "punches";
+		name: "punches",
 		grade: grades.best,
 	};
 }
