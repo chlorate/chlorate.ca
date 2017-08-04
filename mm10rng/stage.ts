@@ -1,4 +1,4 @@
-import {Pattern, suzakFenixSolar, suzakFenixWily2} from "./pattern";
+import {Pattern, crabPuncher, suzakFenixSolar, suzakFenixWily2} from "./pattern";
 
 export interface Stage {
 	name: string;
@@ -33,5 +33,14 @@ export const stages: Stage[] = [
 		yonbain: false,
 		setupToDoor: 68,
 		pattern: suzakFenixWily2,
+	},
+	{
+		name: "Wily Castle 2 - Crab Puncher",
+		seed: stageSeeds.wily2,
+		iceBlocks: true,
+		garinkou: true,
+		yonbain: false,
+		setupToDoor: 71,
+		pattern: crabPuncher,
 	},
 ];
