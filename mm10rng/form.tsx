@@ -194,10 +194,16 @@ export default class FormComponent extends Component<{state: State}, {}> {
 					</div>
 					<div class="row">
 						<div class="col form-inline">
-							<p class="form-control-static mr-2">Show</p>
+							<label for="before" class="sr-only">
+								Frames shown before input time
+							</label>
+							<p class="form-control-static mr-2">
+								Show
+							</p>
 							<input
 								type="number"
 								class="form-control mr-2"
+								id="before"
 								min="0"
 								max="999"
 								placeholder="0"
@@ -207,9 +213,13 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							<p class="form-control-static mr-2">
 								frame{state.before === 1 ? "" : "s"} before and
 							</p>
+							<label for="after" class="sr-only">
+								Frames shown after input time
+							</label>
 							<input
 								type="number"
 								class="form-control mr-2"
+								id="after"
 								min="0"
 								max="999"
 								placeholder="0"
