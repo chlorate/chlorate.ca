@@ -3,6 +3,10 @@
 		width: 5em;
 	}
 
+	.th-min {
+		width: 1px;
+	}
+
 	.th-small {
 		min-width: 7em;
 		width: 15%;
@@ -40,4 +44,10 @@
 			}
 		}
 	}
+
+	.bg-solar-1 { background: #2f1d00; }
+	.bg-solar-2 { background: #550600; }
+	.bg-solar-3 { background: #640000; }
+	.bg-wily2-1 { background: #8c0073; }
+	.bg-wily2-2 { background: #2139ef; }
 }

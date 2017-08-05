@@ -1,8 +1,10 @@
+import {Background, backgrounds} from "./background";
 import {Pattern, crabPuncher, suzakFenixSolar, suzakFenixWily2} from "./pattern";
 
 export interface Stage {
 	name: string;
 	seed: number;
+	background: Background,
 	iceBlocks: boolean;
 	garinkou: boolean;
 	yonbain: boolean;
@@ -20,6 +22,7 @@ export const stages: Stage[] = [
 	{
 		name: "Solar Man - Suzak & Fenix",
 		seed: stageSeeds.solar,
+		background: backgrounds.solar,
 		iceBlocks: false,
 		garinkou: false,
 		yonbain: true,
@@ -30,6 +33,7 @@ export const stages: Stage[] = [
 	{
 		name: "Wily Castle 2 - Suzak & Fenix",
 		seed: stageSeeds.wily2,
+		background: backgrounds.wily2,
 		iceBlocks: true,
 		garinkou: true,
 		yonbain: false,
@@ -40,6 +44,7 @@ export const stages: Stage[] = [
 	{
 		name: "Wily Castle 2 - Crab Puncher",
 		seed: stageSeeds.wily2,
+		background: backgrounds.wily2,
 		iceBlocks: true,
 		garinkou: true,
 		yonbain: false,

@@ -27,10 +27,14 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		let max = state.frame + state.after;
 		let seed = random(state.stage.seed, 1 + min + extraIterations);
 		for (let i = min; i <= max; i++) {
+			let color = state.stage.background.colorAt(i);
 			let doorSeed = random(seed, state.inputLag + state.stage.setupToDoor);
 			let pattern = state.stage.pattern(doorSeed);
 			rows.push(
 				<tr>
+					<td class={color.class}>
+						{color.name}
+					</td>
 					<td>
 						{marshal(i)}
 					</td>
@@ -61,6 +65,9 @@ export default class TableComponent extends Component<{state: State}, {}> {
 					<table class="table table-hover table-sm m-0">
 						<thead>
 							<tr>
+								<th class="th-min">
+									BG
+								</th>
 								<th class="th-small">
 									Input time
 								</th>
