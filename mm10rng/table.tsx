@@ -62,7 +62,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		return (
 			<div class="card">
 				<div class="card-block">
-					<table class="table table-hover table-sm m-0">
+					<table class="table table-hover table-sm m-0 text-center">
 						<thead>
 							<tr>
 								<th class="th-min">
