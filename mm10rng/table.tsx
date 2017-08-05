@@ -1,63 +1,39 @@
 import Component from "inferno-component";
 import {connect} from "inferno-mobx";
 import State from "./state";
-import {marshal, pad, random} from "./util";
 
 @connect(["state"])
 export default class TableComponent extends Component<{state: State}, {}> {
 	render() {
 		let state = this.props.state;
+		let result = state.result();
 
-		let extraIterations = state.kills;
-		if (state.stage.iceBlocks) {
-			extraIterations += state.iceBlocks * 8;
-		}
-		if (state.stage.garinkou) {
-			extraIterations += state.garinkou;
-		}
-		if (state.stage.yonbain) {
-			extraIterations += state.yonbain * 2;
-		}
-		if (state.stage.suzakFenix) {
-			extraIterations += state.suzakFenix;
-		}
-
-		let rows: any[] = [];
-		let min = Math.max(1, state.frame - state.before);
-		let max = state.frame + state.after;
-		let seed = random(state.stage.seed, 1 + min + extraIterations);
-		for (let i = min; i <= max; i++) {
-			let color = state.stage.background.colorAt(i);
-			let doorSeed = random(seed, state.inputLag + state.stage.setupToDoor);
-			let pattern = state.stage.pattern(doorSeed);
-			rows.push(
-				<tr>
-					<td class={color.class}>
-						{color.name}
-					</td>
+		let rows = result.rows.map((row) => (
+			<tr>
+				<td class={row.color.class}>
+					{row.color.name}
+				</td>
+				<td>
+					{row.inputTime}
+				</td>
+				{state.showRng &&
 					<td>
-						{marshal(i)}
+						{row.inputSeed}
 					</td>
-					{state.showRng &&
-						<td>
-							{pad(seed.toString(16), 8)}
-						</td>
-					}
+				}
+				<td>
+					{row.doorTime}
+				</td>
+				{state.showRng &&
 					<td>
-						{marshal(i + state.inputLag + state.stage.setupToDoor)}
+						{row.doorSeed}
 					</td>
-					{state.showRng &&
-						<td>
-							{pad(doorSeed.toString(16), 8)}
-						</td>
-					}
-					<td class={pattern.grade.class}>
-						{pattern.grade.name}: {pattern.name}
-					</td>
-				</tr>
-			);
-			seed = random(seed);
-		}
+				}
+				<td class={row.pattern.grade.class}>
+					{row.pattern.grade.name}: {row.pattern.name}
+				</td>
+			</tr>
+		));
 
 		return (
 			<div class="card">

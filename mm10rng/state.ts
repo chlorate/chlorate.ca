@@ -1,5 +1,8 @@
 import {observable} from "mobx";
+import {Color} from "./background";
+import {Pattern} from "./pattern";
 import {Stage, stages} from "./stage";
+import {marshal, pad, random} from "./util";
 
 export default class State {
 	@observable stage: Stage;
@@ -54,4 +57,56 @@ export default class State {
 
 	get after(): number { return this._after; }
 	set after(n: number) { this._after = Math.min(Math.max(n, 0), 999); }
+
+	result(): Result {
+		let result: Result = {
+			rows: [],
+		};
+
+		let startFrame = Math.max(1, this.frame - this.before);
+		let endFrame = this.frame + this.after;
+
+		let extraIterations = this.kills;
+		if (this.stage.iceBlocks) {
+			extraIterations += this.iceBlocks * 8;
+		}
+		if (this.stage.garinkou) {
+			extraIterations += this.garinkou;
+		}
+		if (this.stage.yonbain) {
+			extraIterations += this.yonbain * 2;
+		}
+		if (this.stage.suzakFenix) {
+			extraIterations += this.suzakFenix;
+		}
+		let seed = random(this.stage.seed, 1 + startFrame + extraIterations);
+
+		for (let frame = startFrame; frame <= endFrame; frame++) {
+			let doorSeed = random(seed, this.inputLag + this.stage.setupToDoor);
+			result.rows.push({
+				color: this.stage.background.colorAt(frame),
+				inputTime: marshal(frame),
+				inputSeed: pad(seed.toString(16), 8),
+				doorTime: marshal(frame + this.inputLag + this.stage.setupToDoor),
+				doorSeed: pad(doorSeed.toString(16), 8),
+				pattern: this.stage.pattern(doorSeed),
+			});
+			seed = random(seed);
+		}
+
+		return result;
+	}
+}
+
+interface Result {
+	rows: Row[];
+}
+
+interface Row {
+	color: Color;
+	inputTime: string;
+	inputSeed: string;
+	doorTime: string;
+	doorSeed: string;
+	pattern: Pattern;
 }
