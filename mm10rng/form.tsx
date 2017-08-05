@@ -5,6 +5,11 @@ import {stages} from "./stage";
 import State from "./state";
 import {marshal, unmarshal} from "./util";
 
+const classes = [
+	"col-sm form-group",
+	"col-sm-6 col-md-4 col-lg-3 form-group",
+];
+
 @connect(["state"])
 export default class FormComponent extends Component<{state: State}, {}> {
 	render() {
@@ -14,8 +19,8 @@ export default class FormComponent extends Component<{state: State}, {}> {
 		return (
 			<form class="card mb-3">
 				<div class="card-block">
-					<div class="row mb-3">
-						<div class="col-4">
+					<div class="row">
+						<div class="col-lg-5 col-xl-4 form-group">
 							<label for="stage">Stage</label>
 							<select
 								class="form-control"
@@ -25,7 +30,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								{options}
 							</select>
 						</div>
-						<div class="col">
+						<div class={classes[0]}>
 							<label for="time">
 								Input time
 								<div class="tip">
@@ -52,7 +57,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								onKeyDown={linkEvent(this, handleTimeKeyDown)}
 							/>
 						</div>
-						<div class="col">
+						<div class={classes[0]}>
 							<label for="input-lag">
 								Input lag
 								<div class="tip">
@@ -74,7 +79,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								onInput={linkEvent(this, handleInputLagChange)}
 							/>
 						</div>
-						<div class="col">
+						<div class={classes[0]}>
 							<label for="kills">
 								Enemies killed
 								<div class="tip">
@@ -97,9 +102,9 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							/>
 						</div>
 					</div>
-					<div class="row mb-3">
+					<div class="row">
 						{state.stage.iceBlocks &&
-							<div class="col-3">
+							<div class={classes[1]}>
 								<label for="ice-blocks">
 									Ice blocks destroyed
 								</label>
@@ -116,7 +121,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</div>
 						}
 						{state.stage.garinkou &&
-							<div class="col-3">
+							<div class={classes[1]}>
 								<label for="garinkou">
 									Garinkou jumps
 									<div class="tip">
@@ -142,7 +147,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</div>
 						}
 						{state.stage.yonbain &&
-							<div class="col-3">
+							<div class={classes[1]}>
 								<label for="yonbain">
 									Yonbain moves
 									<div class="tip">
@@ -167,7 +172,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 							</div>
 						}
 						{state.stage.suzakFenix &&
-							<div class="col-3">
+							<div class={classes[1]}>
 								<label for="suzak-fenix">
 									Suzak & Fenix moves
 									<div class="tip">
@@ -230,7 +235,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								frame{state.after === 1 ? "": "s"} after input time.
 							</p>
 						</div>
-						<div class="col-3 form-inline justify-content-end">
+						<div class="col-lg-3 form-inline justify-content-end">
 							<div class="form-check">
 								<label class="form-check-label">
 									<input
