@@ -10,7 +10,7 @@ const patternBit = 0x10000;
 
 const doorToAttack = 221;
 const horizToAttack = 196;
-const vertToAttack = 123;
+const vertToAttack = 127; // 123 if you don't kill a bird.
 
 export function suzakFenixSolar(seed: number): Pattern {
 	seed = random(seed, doorToAttack);
