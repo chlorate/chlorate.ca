@@ -35,7 +35,7 @@ export const TableComponent = connect(["state"], ({state, result}: Props) => {
 	));
 
 	return (
-		<div class="card mb-3">
+		<div class="card">
 			<div class="card-block">
 				<table class="table table-hover table-sm m-0 text-center">
 					<thead>
