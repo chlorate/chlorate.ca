@@ -6,6 +6,7 @@ export interface Stage {
 	iceBlocks: boolean;
 	garinkou: boolean;
 	yonbain: boolean;
+	suzakFenix: boolean;
 	setupToDoor: number;
 	pattern(seed: number): Pattern;
 }
@@ -22,6 +23,7 @@ export const stages: Stage[] = [
 		iceBlocks: false,
 		garinkou: false,
 		yonbain: true,
+		suzakFenix: false,
 		setupToDoor: 151,
 		pattern: suzakFenixSolar,
 	},
@@ -31,6 +33,7 @@ export const stages: Stage[] = [
 		iceBlocks: true,
 		garinkou: true,
 		yonbain: false,
+		suzakFenix: false,
 		setupToDoor: 68,
 		pattern: suzakFenixWily2,
 	},
@@ -40,6 +43,7 @@ export const stages: Stage[] = [
 		iceBlocks: true,
 		garinkou: true,
 		yonbain: false,
+		suzakFenix: true,
 		setupToDoor: 71,
 		pattern: crabPuncher,
 	},

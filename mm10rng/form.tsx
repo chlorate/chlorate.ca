@@ -166,6 +166,31 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								/>
 							</div>
 						}
+						{state.stage.suzakFenix &&
+							<div class="col-3">
+								<label for="suzak-fenix">
+									Suzak & Fenix moves
+									<div class="tip">
+										<div class="card">
+											<div class="card-block">
+												The number of times Suzak & Fenix move.
+												2 unless you get a bad kill.
+											</div>
+										</div>
+									</div>
+								</label>
+								<input
+									type="number"
+									class="form-control"
+									id="suzak-fenix"
+									min="0"
+									max="999"
+									placeholder="0"
+									value={state.suzakFenix}
+									onInput={linkEvent(this, handleSuzakFenixChange)}
+								/>
+							</div>
+						}
 					</div>
 					<div class="row">
 						<div class="col form-inline">
@@ -261,6 +286,10 @@ function handleGarinkouChange(instance: FormComponent, event) {
 
 function handleYonbainChange(instance: FormComponent, event) {
 	instance.props.state.yonbain = parseInt(event.target.value) || 0;
+}
+
+function handleSuzakFenixChange(instance: FormComponent, event) {
+	instance.props.state.suzakFenix = parseInt(event.target.value) || 0;
 }
 
 function handleShowRngChange(instance: FormComponent, event) {

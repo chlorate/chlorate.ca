@@ -18,6 +18,9 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		if (state.stage.yonbain) {
 			extraIterations += state.yonbain * 2;
 		}
+		if (state.stage.suzakFenix) {
+			extraIterations += state.suzakFenix;
+		}
 
 		let rows: any[] = [];
 		let min = Math.max(1, state.frame - state.before);

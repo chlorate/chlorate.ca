@@ -9,6 +9,7 @@ export default class State {
 	@observable private _iceBlocks: number;
 	@observable private _garinkou: number;
 	@observable private _yonbain: number;
+	@observable private _suzakFenix: number;
 	@observable showRng: boolean;
 	@observable private _before: number;
 	@observable private _after: number;
@@ -21,6 +22,7 @@ export default class State {
 		this.iceBlocks = 0;
 		this.garinkou = 0;
 		this.yonbain = 0;
+		this.suzakFenix = 2;
 		this.showRng = false;
 		this.before = 0;
 		this.after = 60;
@@ -43,6 +45,9 @@ export default class State {
 
 	get yonbain(): number { return this._yonbain; }
 	set yonbain(n: number) { this._yonbain = Math.min(Math.max(n, 0), 999); }
+
+	get suzakFenix(): number { return this._suzakFenix; }
+	set suzakFenix(n: number) { this._suzakFenix = Math.min(Math.max(n, 0), 999); }
 
 	get before(): number { return this._before; }
 	set before(n: number) { this._before = Math.min(Math.max(n, 0), 999); }
