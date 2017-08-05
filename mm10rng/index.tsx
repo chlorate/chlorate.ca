@@ -1,18 +1,27 @@
 import {render} from "inferno";
-import {Provider} from "inferno-mobx";
+import {Provider, connect} from "inferno-mobx";
 import {observable} from "mobx";
-import FormComponent from "./form";
-import TableComponent from "./table";
-import State from "./state";
+import {BarComponent} from "./bar";
+import {FormComponent} from "./form";
+import {State} from "./state";
+import {TableComponent} from "./table";
 
 let state = observable(new State());
 
+const IndexComponent = connect(["state"], ({state}: {state: State}) => {
+	let result = state.result();
+	return (
+		<div>
+			<FormComponent />
+			<BarComponent result={result} />
+			<TableComponent result={result} />
+		</div>
+	);
+});
+
 render(
 	<Provider state={state}>
-		<main>
-			<FormComponent />
-			<TableComponent />
-		</main>
+		<IndexComponent />
 	</Provider>,
 	document.getElementsByTagName("main")[0]
 );

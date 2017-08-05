@@ -19,6 +19,7 @@ styles:
   mixins: true
   normalize: true
   print: true
+  progress: true
   reboot: true
   tables: true
   type: true

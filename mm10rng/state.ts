@@ -1,10 +1,11 @@
 import {observable} from "mobx";
 import {Color} from "./background";
+import {grades} from "./grade";
 import {Pattern} from "./pattern";
 import {Stage, stages} from "./stage";
 import {marshal, pad, random} from "./util";
 
-export default class State {
+export class State {
 	@observable stage: Stage;
 	@observable private _frame: number;
 	@observable private _kills: number;
@@ -61,6 +62,7 @@ export default class State {
 	result(): Result {
 		let result: Result = {
 			rows: [],
+			gradeCounts: {},
 		};
 
 		let startFrame = Math.max(1, this.frame - this.before);
@@ -94,12 +96,23 @@ export default class State {
 			seed = random(seed);
 		}
 
+		let gradeKeys = Object.keys(grades);
+		gradeKeys.forEach((key) => result.gradeCounts[key] = 0);
+		result.rows.forEach((row) => {
+			let key = gradeKeys.find((key) => grades[key] === row.pattern.grade);
+			if (!key) {
+				throw "grade not found";
+			}
+			result.gradeCounts[key]++;
+		});
+
 		return result;
 	}
 }
 
-interface Result {
+export interface Result {
 	rows: Row[];
+	gradeCounts: {[key: string]: number};
 }
 
 interface Row {

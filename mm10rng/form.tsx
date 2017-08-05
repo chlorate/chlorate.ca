@@ -2,7 +2,7 @@ import {linkEvent} from "inferno";
 import Component from "inferno-component";
 import {connect} from "inferno-mobx";
 import {stages} from "./stage";
-import State from "./state";
+import {State} from "./state";
 import {marshal, unmarshal} from "./util";
 
 const classes = [
@@ -11,7 +11,7 @@ const classes = [
 ];
 
 @connect(["state"])
-export default class FormComponent extends Component<{state: State}, {}> {
+export class FormComponent extends Component<{state: State}, {}> {
 	render() {
 		let state = this.props.state;
 		let options = stages.map((stage, i) => <option value={i}>{stage.name}</option>);
