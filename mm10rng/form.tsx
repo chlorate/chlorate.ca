@@ -46,7 +46,7 @@ export default class FormComponent extends Component<{state: State}, {}> {
 								class="form-control"
 								id="time"
 								maxlength="8"
-								placeholder="00:00.00"
+								placeholder="00:00.01"
 								value={marshal(state.frame)}
 								onChange={linkEvent(this, handleTimeChange)}
 								onKeyDown={linkEvent(this, handleTimeKeyDown)}

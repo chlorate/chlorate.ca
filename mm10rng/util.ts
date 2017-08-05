@@ -11,11 +11,10 @@ export function unmarshal(time: string): number {
 	let seconds = parseInt(result[2]);
 	let tenths = parseInt(result[3]) || 0;
 	let hundredths = hundredthsToFrames[result[4]] || 0;
-	return minutes * 3600 + seconds * 60 + tenths * 6 + hundredths + 1;
+	return minutes * 3600 + seconds * 60 + tenths * 6 + hundredths;
 }
 
 export function marshal(frame: number): string {
-	frame--;
 	let minutes = Math.floor(frame / 3600);
 	let seconds = Math.floor((frame % 3600) / 60);
 	let tenths = Math.floor((frame % 60) / 6);

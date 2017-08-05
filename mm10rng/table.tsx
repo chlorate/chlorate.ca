@@ -25,7 +25,7 @@ export default class TableComponent extends Component<{state: State}, {}> {
 		let rows: any[] = [];
 		let min = Math.max(1, state.frame - state.before);
 		let max = state.frame + state.after;
-		let seed = random(state.stage.seed, min + extraIterations);
+		let seed = random(state.stage.seed, 1 + min + extraIterations);
 		for (let i = min; i <= max; i++) {
 			let doorSeed = random(seed, state.inputLag + state.stage.setupToDoor);
 			let pattern = state.stage.pattern(doorSeed);
