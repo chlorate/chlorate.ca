@@ -54,28 +54,6 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 						/>
 					</div>
 					<div class={classes[0]}>
-						<label for="input-lag">
-							Input lag
-							<div class="tip">
-								<div class="card">
-									<div class="card-block">
-										Dolphin input lag varies between 2 to 4 frames.
-									</div>
-								</div>
-							</div>
-						</label>
-						<input
-							type="number"
-							class="form-control"
-							id="input-lag"
-							min="0"
-							max="999"
-							placeholder="0"
-							value={state.inputLag}
-							onInput={linkEvent(state, handleInputLagChange)}
-						/>
-					</div>
-					<div class={classes[0]}>
 						<label for="kills">
 							Enemies killed
 							<div class="tip">
@@ -276,10 +254,6 @@ function handleTimeKeyDown(state: State, event) {
 		state.frame += value;
 		event.preventDefault();
 	}
-}
-
-function handleInputLagChange(state: State, event) {
-	state.inputLag = parseInt(event.target.value) || 0;
 }
 
 function handleKillsChange(state: State, event) {

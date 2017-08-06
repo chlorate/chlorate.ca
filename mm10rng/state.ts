@@ -9,7 +9,6 @@ export class State {
 	@observable stage: Stage;
 	@observable private _frame: number;
 	@observable private _kills: number;
-	@observable private _inputLag: number;
 	@observable private _iceBlocks: number;
 	@observable private _garinkou: number;
 	@observable private _yonbain: number;
@@ -22,7 +21,6 @@ export class State {
 		this.stage = stages[0];
 		this.frame = 1;
 		this.kills = 0;
-		this.inputLag = 0;
 		this.iceBlocks = 0;
 		this.garinkou = 0;
 		this.yonbain = 0;
@@ -37,9 +35,6 @@ export class State {
 
 	get kills(): number { return this._kills; }
 	set kills(n: number) { this._kills = Math.min(Math.max(n, 0), 999); }
-
-	get inputLag(): number { return this._inputLag; }
-	set inputLag(n: number) { this._inputLag = Math.min(Math.max(n, 0), 999); }
 
 	get iceBlocks(): number { return this._iceBlocks; }
 	set iceBlocks(n: number) { this._iceBlocks = Math.min(Math.max(n, 0), 999); }
@@ -84,12 +79,12 @@ export class State {
 		let seed = random(this.stage.seed, 1 + startFrame + extraIterations);
 
 		for (let frame = startFrame; frame <= endFrame; frame++) {
-			let doorSeed = random(seed, this.inputLag + this.stage.setupToDoor);
+			let doorSeed = random(seed, this.stage.setupToDoor);
 			result.rows.push({
 				color: this.stage.background.colorAt(frame),
 				inputTime: marshal(frame),
 				inputSeed: pad(seed.toString(16), 8),
-				doorTime: marshal(frame + this.inputLag + this.stage.setupToDoor),
+				doorTime: marshal(frame + this.stage.setupToDoor),
 				doorSeed: pad(doorSeed.toString(16), 8),
 				pattern: this.stage.pattern(doorSeed),
 			});
