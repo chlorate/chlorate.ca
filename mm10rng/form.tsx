@@ -76,6 +76,29 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 							onInput={linkEvent(state, handleKillsChange)}
 						/>
 					</div>
+					<div class={classes[0]}>
+						<label for="refill-frames">
+							Energy refill frames
+							<div class="tip">
+								<div class="card">
+									<div class="card-block">
+										The energy refill animation delays the background animation.
+										Add 1 whenever the top pixel of energy is refilled.
+										Otherwise, add 4 for every pixel.
+									</div>
+								</div>
+							</div>
+						</label>
+						<input
+							type="number"
+							class="form-control"
+							min={minValue}
+							max={maxValue}
+							placeholder={minValue}
+							value={state.refillFrames}
+							onInput={linkEvent(state, handleRefillFramesChange)}
+						/>
+					</div>
 				</div>
 				<div class="row">
 					{state.stage.iceBlocks &&
@@ -259,6 +282,10 @@ function handleTimeKeyDown(state: State, event) {
 
 function handleKillsChange(state: State, event) {
 	state.kills = parseInt(event.target.value);
+}
+
+function handleRefillFramesChange(state: State, event) {
+	state.refillFrames = parseInt(event.target.value);
 }
 
 function handleIceBlocksChange(state: State, event) {

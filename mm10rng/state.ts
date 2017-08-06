@@ -16,6 +16,7 @@ export class State {
 	@observable private _frame: number;
 	@observable private _before: number;
 	@observable private _after: number;
+	@observable private _refillFrames: number;
 	@observable private _kills: number;
 	@observable private _iceBlocks: number;
 	@observable private _garinkou: number;
@@ -28,6 +29,7 @@ export class State {
 		this.frame = minFrame;
 		this.before = 0;
 		this.after = 60;
+		this.refillFrames = 0;
 		this.kills = 0;
 		this.iceBlocks = 0;
 		this.garinkou = 0;
@@ -44,6 +46,9 @@ export class State {
 
 	get after(): number { return this._after; }
 	set after(n: number) { this._after = clamp(n, minValue, maxValue); }
+
+	get refillFrames(): number { return this._refillFrames; }
+	set refillFrames(n: number) { this._refillFrames = clamp(n, minValue, maxValue); }
 
 	get kills(): number { return this._kills; }
 	set kills(n: number) { this._kills = clamp(n, minValue, maxValue); }
@@ -87,7 +92,7 @@ export class State {
 		for (let frame = startFrame; frame <= endFrame; frame++) {
 			let doorSeed = random(seed, this.stage.setupToDoor);
 			result.rows.push({
-				color: this.stage.background.colorAt(frame),
+				color: this.stage.background.colorAt(frame - this.refillFrames),
 				inputTime: marshal(frame),
 				inputSeed: toHexString(seed),
 				doorTime: marshal(frame + this.stage.setupToDoor),

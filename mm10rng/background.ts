@@ -9,6 +9,10 @@ export class Background {
 
 	colorAt(frame: number): Color {
 		frame = (frame - 1) % this.length;
+		if (frame < 0) {
+			frame += this.length;
+		}
+
 		let color = this.colors.find(color => {
 			frame -= color.length;
 			return frame < 0;
