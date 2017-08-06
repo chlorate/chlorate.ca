@@ -1,4 +1,5 @@
 import {observable} from "mobx";
+import {format, parse} from "url";
 import {Color} from "./background";
 import {grades} from "./grade";
 import {clamp, random, toHexString} from "./math";
@@ -10,6 +11,20 @@ export const minFrame = 1;
 export const maxFrame = 359999;
 export const minValue = 0;
 export const maxValue = 999;
+
+interface Query {
+	stage?: string;
+	frame?: string;
+	before?: string;
+	after?: string;
+	kills?: string;
+	refill?: string;
+	ice?: string;
+	garinkou?: string;
+	yonbain?: string;
+	birds?: string;
+	rng?: string;
+}
 
 export class State {
 	@observable stage: Stage;
@@ -64,6 +79,85 @@ export class State {
 
 	get suzakFenix(): number { return this._suzakFenix; }
 	set suzakFenix(n: number) { this._suzakFenix = clamp(n, minValue, maxValue); }
+
+	save() {
+		let query: Query = {
+			stage: this.stage.id,
+		};
+		if (this.frame > minFrame) {
+			query.frame = this.frame.toString();
+		}
+		if (this.before) {
+			query.before = this.before.toString();
+		}
+		if (this.after) {
+			query.after = this.after.toString();
+		}
+		if (this.kills) {
+			query.kills = this.kills.toString();
+		}
+		if (this.refillFrames) {
+			query.refill = this.refillFrames.toString();
+		}
+		if (this.stage.iceBlocks && this.iceBlocks) {
+			query.ice = this.iceBlocks.toString();
+		}
+		if (this.stage.garinkou && this.garinkou) {
+			query.garinkou = this.garinkou.toString();
+		}
+		if (this.stage.yonbain && this.yonbain) {
+			query.yonbain = this.yonbain.toString();
+		}
+		if (this.stage.suzakFenix && this.suzakFenix) {
+			query.birds = this.suzakFenix.toString();
+		}
+		if (this.showRng) {
+			query.rng = "1";
+		}
+
+		let url = parse(window.location.href);
+		url.search = undefined;
+		url.query = query;
+		window.history.replaceState(null, "", format(url));
+	}
+
+	load() {
+		let query: Query = parse(window.location.href, true).query;
+		let stage = stages.find((stage) => stage.id === query.stage);
+		if (stage) {
+			this.stage = stage;
+		}
+		if (query.frame) {
+			this.frame = parseInt(query.frame);
+		}
+		if (query.before) {
+			this.before = parseInt(query.before);
+		}
+		if (query.after) {
+			this.after = parseInt(query.after);
+		}
+		if (query.kills) {
+			this.kills = parseInt(query.kills);
+		}
+		if (query.refill) {
+			this.refillFrames = parseInt(query.refill);
+		}
+		if (query.ice) {
+			this.iceBlocks = parseInt(query.ice);
+		}
+		if (query.garinkou) {
+			this.garinkou = parseInt(query.garinkou);
+		}
+		if (query.yonbain) {
+			this.yonbain = parseInt(query.yonbain);
+		}
+		if (query.birds) {
+			this.suzakFenix = parseInt(query.birds);
+		}
+		if (query.rng) {
+			this.showRng = query.rng === "1";
+		}
+	}
 
 	result(): Result {
 		let result: Result = {

@@ -10,7 +10,7 @@ const classes = [
 ];
 
 export const FormComponent = connect(["state"], ({state}: {state: State}) => {
-	let options = stages.map((stage, i) => <option value={i}>{stage.name}</option>);
+	let options = stages.map((stage, i) => <option value={stage.id}>{stage.name}</option>);
 	let timePlaceholder = marshal(minFrame);
 
 	return (
@@ -22,7 +22,8 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 						<select
 							class="form-control"
 							id="stage"
-							onChange={linkEvent(state, handleStageChange)}
+							value={state.stage.id}
+							onInput={linkEvent(state, handleStageChange)}
 						>
 							{options}
 						</select>
@@ -239,7 +240,8 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 								<input
 									type="checkbox"
 									class="form-check-input"
-									onChange={linkEvent(state, handleShowRngChange)}
+									checked={state.showRng}
+									onClick={linkEvent(state, handleShowRngChange)}
 								/> Show RNG values
 							</label>
 						</div>
@@ -251,11 +253,18 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 });
 
 function handleStageChange(state: State, event) {
-	state.stage = stages[event.target.value];
+	let id = event.target.value;
+	let stage = stages.find((stage) => stage.id === id);
+	if (!stage) {
+		throw `stage not found: ${id}`
+	}
+	state.stage = stage;
+	state.save();
 }
 
 function handleTimeChange(state: State, event) {
 	state.frame = unmarshal(event.target.value);
+	state.save();
 }
 
 enum Key {
@@ -276,42 +285,52 @@ function handleTimeKeyDown(state: State, event) {
 	let value = keyValues[event.keyCode];
 	if (value) {
 		state.frame += value;
+		state.save();
 		event.preventDefault();
 	}
 }
 
 function handleKillsChange(state: State, event) {
 	state.kills = parseInt(event.target.value);
+	state.save();
 }
 
 function handleRefillFramesChange(state: State, event) {
 	state.refillFrames = parseInt(event.target.value);
+	state.save();
 }
 
 function handleIceBlocksChange(state: State, event) {
 	state.iceBlocks = parseInt(event.target.value);
+	state.save();
 }
 
 function handleGarinkouChange(state: State, event) {
 	state.garinkou = parseInt(event.target.value);
+	state.save();
 }
 
 function handleYonbainChange(state: State, event) {
 	state.yonbain = parseInt(event.target.value);
+	state.save();
 }
 
 function handleSuzakFenixChange(state: State, event) {
 	state.suzakFenix = parseInt(event.target.value);
+	state.save();
 }
 
 function handleBeforeChange(state: State, event) {
 	state.before = parseInt(event.target.value);
+	state.save();
 }
 
 function handleAfterChange(state: State, event) {
 	state.after = parseInt(event.target.value);
+	state.save();
 }
 
 function handleShowRngChange(state: State, event) {
 	state.showRng = event.target.checked;
+	state.save();
 }

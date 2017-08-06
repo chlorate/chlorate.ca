@@ -2,6 +2,7 @@ import {Background, backgrounds} from "./background";
 import {Pattern, crabPuncher, suzakFenixSolar, suzakFenixWily2} from "./pattern";
 
 export interface Stage {
+	id: string;
 	name: string;
 	seed: number;
 	background: Background,
@@ -20,6 +21,7 @@ const stageSeeds = {
 
 export const stages: Stage[] = [
 	{
+		id: "solar-birds",
 		name: "Solar Man - Suzak & Fenix",
 		seed: stageSeeds.solar,
 		background: backgrounds.solar,
@@ -31,6 +33,7 @@ export const stages: Stage[] = [
 		pattern: suzakFenixSolar,
 	},
 	{
+		id: "wily2-birds",
 		name: "Wily Castle 2 - Suzak & Fenix",
 		seed: stageSeeds.wily2,
 		background: backgrounds.wily2,
@@ -42,6 +45,7 @@ export const stages: Stage[] = [
 		pattern: suzakFenixWily2,
 	},
 	{
+		id: "wily2-crab",
 		name: "Wily Castle 2 - Crab Puncher",
 		seed: stageSeeds.wily2,
 		background: backgrounds.wily2,

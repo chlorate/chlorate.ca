@@ -7,6 +7,7 @@ import {State} from "./state";
 import {TableComponent} from "./table";
 
 let state = observable(new State());
+state.load();
 
 const IndexComponent = connect(["state"], ({state}: {state: State}) => {
 	let result = state.result();
