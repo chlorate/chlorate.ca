@@ -1,9 +1,9 @@
-import {grades} from "./grade";
+import {grades, orderedGrades} from "./grade";
 import {Result} from "./state";
 
 export function BarComponent({result}: {result: Result}) {
 	let bars: any[] = [];
-	["best", "good", "bad"].forEach(key => {
+	orderedGrades.forEach(key => {
 		let percent = result.gradeCounts[key] / result.rows.length * 100;
 		if (percent) {
 			bars.push(

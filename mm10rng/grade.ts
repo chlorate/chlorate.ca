@@ -21,3 +21,5 @@ export const grades = {
 		state: "danger",
 	},
 };
+
+export const orderedGrades = ["best", "good", "bad"];

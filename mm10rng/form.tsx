@@ -1,8 +1,8 @@
 import {linkEvent} from "inferno";
 import {connect} from "inferno-mobx";
 import {stages} from "./stage";
-import {State} from "./state";
-import {marshal, unmarshal} from "./util";
+import {State, minFrame, minValue, maxValue} from "./state";
+import {marshal, unmarshal} from "./time";
 
 const classes = [
 	"col-sm form-group",
@@ -11,6 +11,7 @@ const classes = [
 
 export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 	let options = stages.map((stage, i) => <option value={i}>{stage.name}</option>);
+	let timePlaceholder = marshal(minFrame);
 
 	return (
 		<form class="card mb-3">
@@ -46,8 +47,8 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 							type="text"
 							class="form-control"
 							id="time"
-							maxlength="8"
-							placeholder="00:00.01"
+							maxlength={timePlaceholder.length}
+							placeholder={timePlaceholder}
 							value={marshal(state.frame)}
 							onChange={linkEvent(state, handleTimeChange)}
 							onKeyDown={linkEvent(state, handleTimeKeyDown)}
@@ -68,9 +69,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 							type="number"
 							class="form-control"
 							id="kills"
-							min="0"
-							max="999"
-							placeholder="0"
+							min={minValue}
+							max={maxValue}
+							placeholder={minValue}
 							value={state.kills}
 							onInput={linkEvent(state, handleKillsChange)}
 						/>
@@ -86,9 +87,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 								type="number"
 								class="form-control"
 								id="ice-blocks"
-								min="0"
-								max="999"
-								placeholder="0"
+								min={minValue}
+								max={maxValue}
+								placeholder={minValue}
 								value={state.iceBlocks}
 								onInput={linkEvent(state, handleIceBlocksChange)}
 							/>
@@ -112,9 +113,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 								type="number"
 								class="form-control"
 								id="garinkou"
-								min="0"
-								max="999"
-								placeholder="0"
+								min={minValue}
+								max={maxValue}
+								placeholder={minValue}
 								value={state.garinkou}
 								onInput={linkEvent(state, handleGarinkouChange)}
 							/>
@@ -137,9 +138,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 								type="number"
 								class="form-control"
 								id="yonbain"
-								min="0"
-								max="999"
-								placeholder="0"
+								min={minValue}
+								max={maxValue}
+								placeholder={minValue}
 								value={state.yonbain}
 								onInput={linkEvent(state, handleYonbainChange)}
 							/>
@@ -162,9 +163,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 								type="number"
 								class="form-control"
 								id="suzak-fenix"
-								min="0"
-								max="999"
-								placeholder="0"
+								min={minValue}
+								max={maxValue}
+								placeholder={minValue}
 								value={state.suzakFenix}
 								onInput={linkEvent(state, handleSuzakFenixChange)}
 							/>
@@ -183,9 +184,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 							type="number"
 							class="form-control mr-2"
 							id="before"
-							min="0"
-							max="999"
-							placeholder="0"
+							min={minValue}
+							max={maxValue}
+							placeholder={minValue}
 							value={state.before}
 							onInput={linkEvent(state, handleBeforeChange)}
 						/>
@@ -199,9 +200,9 @@ export const FormComponent = connect(["state"], ({state}: {state: State}) => {
 							type="number"
 							class="form-control mr-2"
 							id="after"
-							min="0"
-							max="999"
-							placeholder="0"
+							min={minValue}
+							max={maxValue}
+							placeholder={minValue}
 							value={state.after}
 							onInput={linkEvent(state, handleAfterChange)}
 						/>
@@ -257,33 +258,33 @@ function handleTimeKeyDown(state: State, event) {
 }
 
 function handleKillsChange(state: State, event) {
-	state.kills = parseInt(event.target.value) || 0;
+	state.kills = parseInt(event.target.value);
 }
 
 function handleIceBlocksChange(state: State, event) {
-	state.iceBlocks = parseInt(event.target.value) || 0;
+	state.iceBlocks = parseInt(event.target.value);
 }
 
 function handleGarinkouChange(state: State, event) {
-	state.garinkou = parseInt(event.target.value) || 0;
+	state.garinkou = parseInt(event.target.value);
 }
 
 function handleYonbainChange(state: State, event) {
-	state.yonbain = parseInt(event.target.value) || 0;
+	state.yonbain = parseInt(event.target.value);
 }
 
 function handleSuzakFenixChange(state: State, event) {
-	state.suzakFenix = parseInt(event.target.value) || 0;
+	state.suzakFenix = parseInt(event.target.value);
+}
+
+function handleBeforeChange(state: State, event) {
+	state.before = parseInt(event.target.value);
+}
+
+function handleAfterChange(state: State, event) {
+	state.after = parseInt(event.target.value);
 }
 
 function handleShowRngChange(state: State, event) {
 	state.showRng = event.target.checked;
-}
-
-function handleBeforeChange(state: State, event) {
-	state.before = parseInt(event.target.value) || 0;
-}
-
-function handleAfterChange(state: State, event) {
-	state.after = parseInt(event.target.value) || 0;
 }

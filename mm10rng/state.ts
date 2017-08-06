@@ -1,58 +1,64 @@
 import {observable} from "mobx";
 import {Color} from "./background";
 import {grades} from "./grade";
+import {clamp, random, toHexString} from "./math";
 import {Pattern} from "./pattern";
 import {Stage, stages} from "./stage";
-import {marshal, pad, random} from "./util";
+import {marshal} from "./time";
+
+export const minFrame = 1;
+export const maxFrame = 359999;
+export const minValue = 0;
+export const maxValue = 999;
 
 export class State {
 	@observable stage: Stage;
 	@observable private _frame: number;
+	@observable private _before: number;
+	@observable private _after: number;
 	@observable private _kills: number;
 	@observable private _iceBlocks: number;
 	@observable private _garinkou: number;
 	@observable private _yonbain: number;
 	@observable private _suzakFenix: number;
 	@observable showRng: boolean;
-	@observable private _before: number;
-	@observable private _after: number;
 
 	constructor() {
 		this.stage = stages[0];
-		this.frame = 1;
+		this.frame = minFrame;
+		this.before = 0;
+		this.after = 60;
 		this.kills = 0;
 		this.iceBlocks = 0;
 		this.garinkou = 0;
 		this.yonbain = 0;
 		this.suzakFenix = 2;
 		this.showRng = false;
-		this.before = 0;
-		this.after = 60;
 	}
 
 	get frame(): number { return this._frame; }
-	set frame(n: number) { this._frame = Math.max(n, 1); }
-
-	get kills(): number { return this._kills; }
-	set kills(n: number) { this._kills = Math.min(Math.max(n, 0), 999); }
-
-	get iceBlocks(): number { return this._iceBlocks; }
-	set iceBlocks(n: number) { this._iceBlocks = Math.min(Math.max(n, 0), 999); }
-
-	get garinkou(): number { return this._garinkou; }
-	set garinkou(n: number) { this._garinkou = Math.min(Math.max(n, 0), 999); }
-
-	get yonbain(): number { return this._yonbain; }
-	set yonbain(n: number) { this._yonbain = Math.min(Math.max(n, 0), 999); }
-
-	get suzakFenix(): number { return this._suzakFenix; }
-	set suzakFenix(n: number) { this._suzakFenix = Math.min(Math.max(n, 0), 999); }
+	set frame(n: number) { this._frame = clamp(n, minFrame, maxFrame); }
 
 	get before(): number { return this._before; }
-	set before(n: number) { this._before = Math.min(Math.max(n, 0), 999); }
+	set before(n: number) { this._before = clamp(n, minValue, maxValue); }
 
 	get after(): number { return this._after; }
-	set after(n: number) { this._after = Math.min(Math.max(n, 0), 999); }
+	set after(n: number) { this._after = clamp(n, minValue, maxValue); }
+
+	get kills(): number { return this._kills; }
+	set kills(n: number) { this._kills = clamp(n, minValue, maxValue); }
+
+	get iceBlocks(): number { return this._iceBlocks; }
+	set iceBlocks(n: number) { this._iceBlocks = clamp(n, minValue, maxValue); }
+
+	get garinkou(): number { return this._garinkou; }
+	set garinkou(n: number) { this._garinkou = clamp(n, minValue, maxValue); }
+
+	get yonbain(): number { return this._yonbain; }
+	set yonbain(n: number) { this._yonbain = clamp(n, minValue, maxValue); }
+
+	get suzakFenix(): number { return this._suzakFenix; }
+	set suzakFenix(n: number) { this._suzakFenix = clamp(n, minValue, maxValue); }
 
 	result(): Result {
 		let result: Result = {
@@ -60,8 +66,8 @@ export class State {
 			gradeCounts: {},
 		};
 
-		let startFrame = Math.max(1, this.frame - this.before);
-		let endFrame = this.frame + this.after;
+		let startFrame = Math.max(minFrame, this.frame - this.before);
+		let endFrame = Math.min(maxFrame, this.frame + this.after);
 
 		let extraIterations = this.kills;
 		if (this.stage.iceBlocks) {
@@ -83,9 +89,9 @@ export class State {
 			result.rows.push({
 				color: this.stage.background.colorAt(frame),
 				inputTime: marshal(frame),
-				inputSeed: pad(seed.toString(16), 8),
+				inputSeed: toHexString(seed),
 				doorTime: marshal(frame + this.stage.setupToDoor),
-				doorSeed: pad(doorSeed.toString(16), 8),
+				doorSeed: toHexString(doorSeed),
 				pattern: this.stage.pattern(doorSeed),
 			});
 			seed = random(seed);

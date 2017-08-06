@@ -1,5 +1,5 @@
-import {random} from "./util";
 import {Grade, grades} from "./grade";
+import {random} from "./math";
 
 export interface Pattern {
 	name: string;
