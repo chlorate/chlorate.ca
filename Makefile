@@ -1,4 +1,5 @@
 HUGO=hugo --source site
+NCU=node_modules/.bin/ncu
 WEBPACK=node_modules/.bin/webpack
 
 DEPS=node_modules site/static/static styles/retro8.ttf styles/retro16.ttf
@@ -21,6 +22,10 @@ clean:
 .PHONY: clean-deps
 clean-deps:
 	rm --recursive --force node_modules site/data/static.json styles/*.ttf
+
+.PHONY: upgrade
+upgrade:
+	$(NCU) --upgrade
 
 node_modules: package.json
 	npm install
