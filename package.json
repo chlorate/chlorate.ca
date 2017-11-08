@@ -1,7 +1,8 @@
 {
 	"devDependencies": {
-		"bootstrap": "4.0.0-alpha.6",
+		"bootstrap": "4.0.0-beta.2",
 		"bootstrap-loader": "2.2.0",
+		"bootstrap-theme": "chlorate/bootstrap-theme#9861d2f6cfdec1b0d560cd617f757007628687bc",
 		"css-loader": "0.28.7",
 		"extract-text-webpack-plugin": "3.0.2",
 		"file-loader": "1.1.5",

@@ -1,2 +1,8 @@
-@import "fonts";
-@import "home";
+@import '../node_modules/bootstrap-theme/src/post-bootstrap';
+
+html, body {
+	font-size: 17px;
+}
+
+@import 'fonts';
+@import 'home';

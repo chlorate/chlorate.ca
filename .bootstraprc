@@ -1,24 +1,28 @@
 ---
 bootstrapVersion: 4
-useFlexbox: true
 extractStyles: true
-preBootstrapCustomizations: styles/pre-bootstrap.scss
-bootstrapCustomizations: styles/bootstrap.scss
+preBootstrapCustomizations: node_modules/bootstrap-theme/src/pre-bootstrap.scss
 appStyles: styles/index.scss
 
 styleLoaders:
   - style
   - css
-  - postcss
   - sass
 
 styles:
+  nav: true
+
+  alert: true
   buttons: true
   card: true
+  close: true
+  forms: true
   grid: true
+  input-group: true
   mixins: true
-  normalize: true
   print: true
+  progress: true
   reboot: true
+  tables: true
   type: true
   utilities: true
