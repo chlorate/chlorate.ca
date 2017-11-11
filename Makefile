@@ -13,7 +13,7 @@ build: $(DEPS)
 
 .PHONY: watch
 watch: $(DEPS)
-	$(WEBPACK) --watch & $(HUGO) server
+	$(WEBPACK) --watch & $(HUGO) server & wait
 
 .PHONY: clean
 clean: 
