@@ -17,9 +17,6 @@ jobs:
           name: Install Node dependencies
           command: make node_modules
       - run:
-          name: Download fonts
-          command: make styles/retro8.ttf styles/retro16.ttf
-      - run:
           name: Build
           command: PATH=$PATH:~/bin make build
       - persist_to_workspace:
