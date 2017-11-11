@@ -11,7 +11,7 @@ build: node_modules
 
 .PHONY: watch
 watch: site/data/static.json
-	$(WEBPACK) -d --watch & $(HUGO) server & wait
+	$(WEBPACK) -d --watch & $(HUGO) server
 
 .PHONY: clean
 clean: 
