@@ -4,6 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>{{ .Title }}</title>
-		<link rel="stylesheet" href="{{ index .Site.Data.static "styles.css"}}">
+		<link rel="stylesheet" href="{{ index .Site.Data.static "styles.css" }}">
 	</head>
 	<body>
+		{{ if .Params.script }}
+			<noscript>
+				<div class="alert alert-danger text-center m-3" role="alert">
+					JavaScript must be enabled.
+				</div>
+			</noscript>
+		{{ end }}

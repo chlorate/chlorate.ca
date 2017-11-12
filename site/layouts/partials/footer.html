@@ -1,2 +1,6 @@
+		{{ if .Params.script }}
+			<script src="{{ index .Site.Data.static "vendor.js" }}"></script>
+			<script src="{{ index .Site.Data.static (printf "%s.js" .Params.script) }}"></script>
+		{{ end }}
 	</body>
 </html>

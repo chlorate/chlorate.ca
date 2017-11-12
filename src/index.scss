@@ -1,4 +1,8 @@
 @import '../node_modules/bootstrap-theme/src/post-bootstrap';
 
-@import 'fonts';
 @import 'home';
+@import 'fonts';
+
+.page-input-display {
+	@import '../node_modules/input-display/src/index.scss';
+}
