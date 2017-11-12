@@ -1,4 +1,7 @@
 {
+	"name": "chlorate.ca",
+	"private": true,
+	"version": "0.0.0",
 	"devDependencies": {
 		"babel-core": "6.26.0",
 		"babel-loader": "7.1.2",
