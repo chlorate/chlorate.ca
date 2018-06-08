@@ -33,7 +33,7 @@ jobs:
           at: .
       - deploy:
           name: Deploy to S3
-          command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --delete-removed --no-mime-magic --no-preserve --no-progress dist/ s3://chlorate.ca
+          command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/ s3://chlorate.ca
 workflows:
   version: 2
   build-deploy:
