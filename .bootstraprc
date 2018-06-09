@@ -19,6 +19,7 @@ styles:
   close: true
   forms: true
   grid: true
+  images: true
   input-group: true
   mixins: true
   print: true
