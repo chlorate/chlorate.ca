@@ -22,7 +22,19 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: dist
-  deploy:
+  deploy-stage:
+    docker:
+      - image: circleci/python:3.7.0
+    steps:
+      - run:
+          name: Install s3cmd
+          command: pip install --upgrade --user s3cmd
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Deploy to stage S3
+          command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/ s3://stage.chlorate.ca
+  deploy-production:
     docker:
       - image: circleci/python:2.7.13
     steps:
@@ -32,14 +44,18 @@ jobs:
       - attach_workspace:
           at: .
       - deploy:
-          name: Deploy to S3
+          name: Deploy to production S3
           command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/ s3://chlorate.ca
 workflows:
   version: 2
   build-deploy:
     jobs:
       - build
-      - deploy:
+      - deploy-stage:
+          type: approval
+          requires:
+            - build
+      - deploy-production:
           requires:
             - build
           filters:
