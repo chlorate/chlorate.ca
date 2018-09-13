@@ -52,7 +52,6 @@ workflows:
     jobs:
       - build
       - deploy-stage:
-          type: approval
           requires:
             - build
       - deploy-production:
