@@ -1,6 +1,7 @@
-HUGO=hugo --source site
-NCU=node_modules/.bin/ncu
-WEBPACK=node_modules/.bin/webpack
+HUGO = hugo --source site
+NCU = node_modules/.bin/ncu
+S3CMD = s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/
+WEBPACK = node_modules/.bin/webpack
 
 .PHONY: build
 build: node_modules
@@ -20,6 +21,14 @@ clean:
 .PHONY: clean-deps
 clean-deps:
 	rm --recursive --force node_modules
+
+.PHONY: deploy-stage
+deploy-stage:
+	$(S3CMD) s3://stage.chlorate.ca
+
+.PHONY: deploy-production
+deploy-production:
+	$(S3CMD) s3://chlorate.ca
 
 .PHONY: upgrade
 upgrade:

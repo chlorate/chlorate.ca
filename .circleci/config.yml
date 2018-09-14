@@ -33,7 +33,7 @@ jobs:
           at: .
       - deploy:
           name: Deploy to stage S3
-          command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/ s3://stage.chlorate.ca
+          command: PATH=$PATH:~/.local/bin make deploy-stage
   deploy-production:
     docker:
       - image: circleci/python:2.7.13
@@ -45,7 +45,7 @@ jobs:
           at: .
       - deploy:
           name: Deploy to production S3
-          command: PATH=$PATH:~/.local/bin s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/ s3://chlorate.ca
+          command: PATH=$PATH:~/.local/bin make deploy-production
 workflows:
   version: 2
   build-deploy:
