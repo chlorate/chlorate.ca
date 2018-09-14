@@ -21,7 +21,9 @@ jobs:
           command: PATH=$PATH:~/bin make build
       - persist_to_workspace:
           root: .
-          paths: dist
+          paths:
+            - dist
+            - Makefile
   deploy-stage:
     docker:
       - image: circleci/python:2.7.15
