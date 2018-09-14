@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.4.0
+      - image: circleci/node:10.10.0
     steps:
       - checkout
       - run:
@@ -36,11 +36,11 @@ jobs:
           command: PATH=$PATH:~/.local/bin make deploy-stage
   deploy-production:
     docker:
-      - image: circleci/python:2.7.13
+      - image: circleci/python:2.7.15
     steps:
       - run:
           name: Install s3cmd
-          command: pip install --upgrade --user s3cmd
+          command: pip install --upgrade --user s3cmd==2.0.2
       - attach_workspace:
           at: .
       - deploy:
