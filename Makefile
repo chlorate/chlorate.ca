@@ -24,6 +24,8 @@ clean-deps:
 
 .PHONY: deploy-stage
 deploy-stage:
+	echo "User-agent: *" > dist/robots.txt
+	echo "Disallow: /" >> dist/robots.txt
 	$(S3CMD) s3://stage.chlorate.ca
 
 .PHONY: deploy-production
