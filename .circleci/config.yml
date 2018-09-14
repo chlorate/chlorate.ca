@@ -24,11 +24,11 @@ jobs:
           paths: dist
   deploy-stage:
     docker:
-      - image: circleci/python:3.6.6
+      - image: circleci/python:2.7.15
     steps:
       - run:
           name: Install s3cmd
-          command: pip install --upgrade --user s3cmd
+          command: pip install --upgrade --user s3cmd==2.0.2
       - attach_workspace:
           at: .
       - deploy:
