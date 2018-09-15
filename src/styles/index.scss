@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap-theme/src/post-bootstrap";
+@import "~bootstrap-theme/src/post-bootstrap";
 
 @import "error";
 @import "fonts";
@@ -6,5 +6,5 @@
 @import "split-icons";
 
 .page-input-display {
-  @import "../node_modules/input-display/src/index.scss";
+  @import "~input-display/src/index.scss";
 }
