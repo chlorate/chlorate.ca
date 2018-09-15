@@ -1,5 +1,6 @@
 HUGO = hugo --source site
 NCU = node_modules/.bin/ncu
+PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/
 WEBPACK = node_modules/.bin/webpack
 
@@ -13,6 +14,10 @@ build: node_modules
 .PHONY: watch
 watch: site/data/static.json
 	DEVELOPMENT=true $(WEBPACK) -d --watch & $(HUGO) server
+
+.PHONY: format
+format: node_modules
+	$(PRETTIER) --write {*,.circleci/**/*,site/**/*,src/**/*}.{js,json,md,scss,yml}
 
 .PHONY: clean
 clean: 
