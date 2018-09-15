@@ -1,4 +1,4 @@
-HUGO = hugo --source site
+HUGO = hugo --source src/site
 JASMINE = node_modules/.bin/jasmine
 NCU = node_modules/.bin/ncu
 PRETTIER = node_modules/.bin/prettier
@@ -16,7 +16,7 @@ S3CMD_SYNC_ARGS = sync \
 .PHONY: build
 build: node_modules
 	$(WEBPACK) -p
-	rm site/static/static/styles.*.js
+	rm src/site/static/static/styles.*.js
 	$(HUGO) --minify
 
 .PHONY: test
@@ -24,16 +24,16 @@ test: node_modules
 	$(JASMINE) --config=jasmine.json
 
 .PHONY: watch
-watch: site/data/static.json
+watch: src/site/data/static.json
 	DEVELOPMENT=true $(WEBPACK) -d --watch & $(HUGO) server
 
 .PHONY: format
 format: node_modules
-	$(PRETTIER) --write {*,.circleci/**/*,site/**/*,src/**/*}.{js,json,md,scss,yml}
+	$(PRETTIER) --write {*,.circleci/**/*,src/**/*}.{js,json,md,scss,yml}
 
 .PHONY: clean
 clean: 
-	rm --recursive --force dist site/data/static.json site/static/static
+	rm --recursive --force dist src/site/data/static.json src/site/static/static
 
 .PHONY: clean-deps
 clean-deps:
@@ -57,5 +57,5 @@ node_modules: package.json
 	npm install
 	touch $@
 
-site/data/static.json: node_modules
+src/site/data/static.json: node_modules
 	$(WEBPACK) -d
