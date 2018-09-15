@@ -1,4 +1,8 @@
-const handler = require("./redirect").handler;
+const { JUnitXmlReporter } = require("jasmine-reporters");
+const { handler } = require("./redirect");
+
+const reporter = new JUnitXmlReporter({ savePath: "junit/jasmine" });
+jasmine.getEnv().addReporter(reporter);
 
 describe("handler", () => {
   let request;

@@ -35,6 +35,8 @@ jobs:
       - run:
           name: Test
           command: make test
+      - store_test_results:
+          path: junit
   deploy-stage:
     docker:
       - image: circleci/python:2.7.15
@@ -61,7 +63,7 @@ jobs:
           command: PATH=$PATH:~/.local/bin make deploy-production
 workflows:
   version: 2
-  build-deploy:
+  build-test-deploy:
     jobs:
       - build
       - test
