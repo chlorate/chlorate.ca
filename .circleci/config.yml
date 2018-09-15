@@ -24,6 +24,17 @@ jobs:
           paths:
             - dist
             - Makefile
+  test:
+    docker:
+      - image: circleci/node:8.10.0 # AWS Lambda runtime
+    steps:
+      - checkout
+      - run:
+          name: Install Node dependencies
+          command: make node_modules
+      - run:
+          name: Test
+          command: make test
   deploy-stage:
     docker:
       - image: circleci/python:2.7.15
@@ -53,12 +64,15 @@ workflows:
   build-deploy:
     jobs:
       - build
+      - test
       - deploy-stage:
           requires:
             - build
+            - test
       - deploy-production:
           requires:
             - build
+            - test
           filters:
             branches:
               only: master

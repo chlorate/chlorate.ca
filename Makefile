@@ -1,4 +1,5 @@
 HUGO = hugo --source site
+JASMINE = node_modules/.bin/jasmine
 NCU = node_modules/.bin/ncu
 PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd
@@ -18,6 +19,10 @@ build: node_modules
 	rm site/static/static/styles.*.js
 	$(HUGO)
 	minify --recursive --output dist dist
+
+.PHONY: test
+test: node_modules
+	$(JASMINE) --config=jasmine.json
 
 .PHONY: watch
 watch: site/data/static.json
