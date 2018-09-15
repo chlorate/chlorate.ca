@@ -1,5 +1,5 @@
 const { JUnitXmlReporter } = require("jasmine-reporters");
-const { handler } = require("./redirect");
+const { handler } = require("./rewrites");
 
 const reporter = new JUnitXmlReporter({ savePath: "junit/jasmine" });
 jasmine.getEnv().addReporter(reporter);

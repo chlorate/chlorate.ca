@@ -1,8 +1,8 @@
 "use strict";
 
 /**
- * Lambda@Edge viewer request function for redirecting requests before they hit
- * CloudFront.
+ * Lambda@Edge origin request function for rewriting request URLs before they
+ * hit S3's static website endpoint.
  *
  * - Allows for directory trailing slash to be dropped for cleaner URLs.
  */
