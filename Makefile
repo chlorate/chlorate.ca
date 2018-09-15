@@ -1,6 +1,6 @@
 HUGO = hugo --source src/site
 JASMINE = node_modules/.bin/jasmine
-NCU = node_modules/.bin/ncu
+NPM_CHECK = node_modules/.bin/npm-check
 PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd
 WEBPACK = node_modules/.bin/webpack
@@ -66,7 +66,7 @@ deploy-production:
 
 .PHONY: upgrade
 upgrade:
-	$(NCU) --upgrade
+	$(NPM_CHECK) --update --save-exact
 
 node_modules: package.json
 	npm install
