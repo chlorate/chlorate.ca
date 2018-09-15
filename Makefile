@@ -5,9 +5,22 @@ PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd
 WEBPACK = node_modules/.bin/webpack
 
-S3CMD_SYNC_ARGS = sync \
+S3CMD_SYNC_STATIC = $(S3CMD) sync \
+	--add-header=Cache-Control:max-age=31536000 \
+	--exclude="*" \
+	--include="favicon.ico" \
+	--include="robots.txt" \
+	--include="static/*" \
+	--no-mime-magic \
+	--no-preserve \
+	--no-progress \
+	dist/
+
+S3CMD_SYNC_PAGES = $(S3CMD) sync \
 	--add-header=Cache-Control:max-age=86400 \
-	--cf-invalidate \
+	--exclude="favicon.ico" \
+	--exclude="robots.txt" \
+	--exclude="static/*" \
 	--no-mime-magic \
 	--no-preserve \
 	--no-progress \
@@ -43,11 +56,13 @@ clean-deps:
 deploy-stage:
 	echo "User-agent: *" > dist/robots.txt
 	echo "Disallow: /" >> dist/robots.txt
-	$(S3CMD) $(S3CMD_SYNC_ARGS) s3://stage.chlorate.ca
+	$(S3CMD_SYNC_STATIC) s3://stage.chlorate.ca
+	$(S3CMD_SYNC_PAGES) s3://stage.chlorate.ca
 
 .PHONY: deploy-production
 deploy-production:
-	$(S3CMD) $(S3CMD_SYNC_ARGS) s3://chlorate.ca
+	$(S3CMD_SYNC_STATIC) s3://chlorate.ca
+	$(S3CMD_SYNC_PAGES) s3://chlorate.ca
 
 .PHONY: upgrade
 upgrade:
