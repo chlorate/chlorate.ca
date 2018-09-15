@@ -1,8 +1,16 @@
 HUGO = hugo --source site
 NCU = node_modules/.bin/ncu
 PRETTIER = node_modules/.bin/prettier
-S3CMD = s3cmd sync --add-header=Cache-Control:max-age=86400 --cf-invalidate --no-mime-magic --no-preserve --no-progress dist/
+S3CMD = s3cmd
 WEBPACK = node_modules/.bin/webpack
+
+S3CMD_SYNC_ARGS = sync \
+	--add-header=Cache-Control:max-age=86400 \
+	--cf-invalidate \
+	--no-mime-magic \
+	--no-preserve \
+	--no-progress \
+	dist/
 
 .PHONY: build
 build: node_modules
@@ -31,11 +39,11 @@ clean-deps:
 deploy-stage:
 	echo "User-agent: *" > dist/robots.txt
 	echo "Disallow: /" >> dist/robots.txt
-	$(S3CMD) s3://stage.chlorate.ca
+	$(S3CMD) $(S3CMD_SYNC_ARGS) s3://stage.chlorate.ca
 
 .PHONY: deploy-production
 deploy-production:
-	$(S3CMD) s3://chlorate.ca
+	$(S3CMD) $(S3CMD_SYNC_ARGS) s3://chlorate.ca
 
 .PHONY: upgrade
 upgrade:
