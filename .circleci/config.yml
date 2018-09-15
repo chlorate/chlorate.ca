@@ -10,10 +10,6 @@ jobs:
           working_directory: ~/bin
           command: wget --output-document - https://github.com/gohugoio/hugo/releases/download/v0.48/hugo_0.48_Linux-64bit.tar.gz | tar --extract --gzip
       - run:
-          name: Install minify
-          working_directory: ~/bin
-          command: wget --output-document - https://github.com/tdewolff/minify/releases/download/v2.3.5/minify_2.3.5_linux_amd64.tar.gz | tar --extract --gzip
-      - run:
           name: Install Node dependencies
           command: make node_modules
       - run:

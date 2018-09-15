@@ -17,8 +17,7 @@ S3CMD_SYNC_ARGS = sync \
 build: node_modules
 	$(WEBPACK) -p
 	rm site/static/static/styles.*.js
-	$(HUGO)
-	minify --recursive --output dist dist
+	$(HUGO) --minify
 
 .PHONY: test
 test: node_modules
