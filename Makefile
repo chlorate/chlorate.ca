@@ -5,8 +5,9 @@ PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd
 WEBPACK = node_modules/.bin/webpack
 
+# Cache static files for 30 days.
 S3CMD_SYNC_STATIC = $(S3CMD) sync \
-	--add-header=Cache-Control:max-age=31536000 \
+	--add-header=Cache-Control:max-age=2592000 \
 	--exclude="*" \
 	--include="favicon.ico" \
 	--include="robots.txt" \
@@ -16,6 +17,7 @@ S3CMD_SYNC_STATIC = $(S3CMD) sync \
 	--no-progress \
 	dist/
 
+# Cache pages for 1 day.
 S3CMD_SYNC_PAGES = $(S3CMD) sync \
 	--add-header=Cache-Control:max-age=86400 \
 	--exclude="favicon.ico" \
