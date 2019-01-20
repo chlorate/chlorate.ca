@@ -70,7 +70,7 @@ workflows:
             - test
       - deploy-stage:
           requires:
-            - hold-deploy-staging
+            - hold-deploy-stage
       - hold-deploy-production:
           type: approval
           requires:
