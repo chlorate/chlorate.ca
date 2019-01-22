@@ -63,14 +63,19 @@ workflows:
     jobs:
       - build
       - test
+      - hold-deploy-stage:
+          type: approval
+          requires:
+            - build
+            - test
       - deploy-stage:
+          requires:
+            - hold-deploy-stage
+      - hold-deploy-production:
+          type: approval
           requires:
             - build
             - test
       - deploy-production:
           requires:
-            - build
-            - test
-          filters:
-            branches:
-              only: master
+            - hold-deploy-production
