@@ -38,9 +38,13 @@ build: node_modules
 test: node_modules
 	$(JASMINE) --config=jasmine.json
 
-.PHONY: watch
-watch: src/site/data/static.json
-	DEVELOPMENT=true $(WEBPACK) -d --watch & $(HUGO) server
+.PHONY: watch-hugo
+watch-hugo: src/site/data/static.json
+	$(HUGO) server
+
+.PHONY: watch-webpack
+watch-webpack: node_modules
+	$(WEBPACK) -d --watch
 
 .PHONY: format
 format: node_modules
