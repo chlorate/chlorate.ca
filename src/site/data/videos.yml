@@ -1,0 +1,71 @@
+speedruns:
+  playlists:
+    personalBests:
+      - name: Azure Striker Gunvolt
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTo6weFr_ElJYKW6hG5oo6YT
+      - name: Mega Man 1-6
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTqxY0MpP1AXOUcrv3lUFlpt
+      - name: Mega Man 2
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTptygz4qxz2q38_6AkYRZWg
+      - name: Mega Man 7
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTq9cu-MSS2vE3jX4ABYTZ20
+      - name: Mega Man 9
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrkRSjRqdv8DYp7tKtqucue
+      - name: Mega Man 10
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTqVGcd2jcthSN-sAbpy5gyP
+      - name: Mega Man Maker
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpg1_EC702rskEb8VIUVOvN
+      - name: Mega Man X
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpEcsrm8ghkISXK-hv54vm9
+    bestSplits:
+      - name: Mega Man 10
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTp7Y5d4ZzEdJNBSE7tGMxgf
+    strategies:
+      - name: Azure Striker Gunvolt
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTqQCDLDP2JU_4ICWspFsBdJ
+      - name: Mega Man 9
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTqyJ2RqMQZ8aFTVqo-7sxQx
+      - name: Mega Man 10
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrUf9yqyTsdIc0b-N_8nX_i
+      - name: Mega Man 11
+        url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTro3FbhgUVvgIIVW6l-YZvX
+  marathons:
+    - name: "Classic Mega Man Relay Race #9"
+      url: https://www.youtube.com/watch?v=cqvmPFBlsPA
+      date: 2018-02-24
+      description: Mega Man 10
+      spaced: true
+    - name: "Classic Mega Man Relay Race #8"
+      url: https://www.twitch.tv/videos/173543908
+      date: 2017-09-09
+      description: Mega Man 10
+      spaced: true
+    - name: "RaindropDry Fundraiser"
+      url: https://www.twitch.tv/videos/110933162
+      date: 2016-12-17
+      description: Mega Man 10 Any% and Special Stage races with Ajarmar
+      spaced: true
+    - name: "Classic Mega Man Relay Race #7"
+      url: https://www.twitch.tv/videos/100865021
+      date: 2016-11-12
+      description: Mega Man 9 and 10
+      spaced: true
+    - name: "Classic Mega Man Relay Race #6"
+      url: https://www.twitch.tv/videos/61110932
+      date: 2016-04-16
+      description: Mega Man 10
+      spaced: true
+    - name: "JRTA Marathon 2"
+      url: https://www.youtube.com/watch?v=NKa22_AqCJU
+      date: 2015-11-07
+      description: Mega Man 10 Any% and Special Stage races with Ajarmar, cleartonic, and usedpizza
+      spaced: true
+    - name: "Classic Mega Man Relay Race #4"
+      url: https://www.youtube.com/watch?v=bC9Mx8897e4
+      date: 2014-12-06
+      description: Mega Man 10
+      spaced: true
+    - name: "Classic Mega Man Relay Race #3"
+      url: https://www.youtube.com/watch?v=JQeVU8ppW-g
+      date: 2014-08-16
+      description: Mega Man 10
