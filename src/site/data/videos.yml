@@ -17,9 +17,11 @@ speedruns:
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpg1_EC702rskEb8VIUVOvN
       - name: Mega Man X
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpEcsrm8ghkISXK-hv54vm9
+
     bestSplits:
       - name: Mega Man 10
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTp7Y5d4ZzEdJNBSE7tGMxgf
+
     strategies:
       - name: Azure Striker Gunvolt
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTqQCDLDP2JU_4ICWspFsBdJ
@@ -29,6 +31,7 @@ speedruns:
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrUf9yqyTsdIc0b-N_8nX_i
       - name: Mega Man 11
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTro3FbhgUVvgIIVW6l-YZvX
+
   marathons:
     - name: "Classic Mega Man Relay Race #9"
       url: https://www.youtube.com/watch?v=cqvmPFBlsPA
