@@ -1,12 +1,12 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ManifestPlugin = require("webpack-manifest-plugin");
 
-module.exports = {
+const config = {
   entry: {
     "input-display": "./node_modules/input-display/src/index.tsx",
-    styles: "bootstrap-loader"
+    styles: "./src/index.scss"
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
@@ -19,7 +19,12 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: "babel-loader"
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
         test: /\.tsx?$/,
@@ -36,26 +41,37 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks: chunk => /^(input-display|styles)$/.test(chunk.name),
+      cacheGroups: {
+        vendor: {
+          name: "vendor",
+          test: /node_modules/
+        }
+      }
+    }
+  },
   plugins: [
-    new ExtractTextPlugin("[name].[contenthash].css"),
     new ManifestPlugin({
       fileName: "../../data/static.json",
       publicPath: "/static/"
     }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(
-        process.env.DEVELOPMENT === "true" ? "development" : "production"
-      )
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      minChunks: function(module) {
-        return (
-          module.context &&
-          module.context.indexOf("node_modules") >= 0 &&
-          !/(bootstrap|css|style)-loader|input-display/.test(module.context)
-        );
-      }
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css"
     })
   ]
+};
+
+module.exports = (env, options) => {
+  const defines = {
+    "process.env.NODE_ENV": JSON.stringify("production")
+  };
+
+  if (options.mode === "development") {
+    defines["process.env.NODE_ENV"] = JSON.stringify("development");
+  }
+
+  config.plugins.push(new webpack.DefinePlugin(defines));
+  return config;
 };

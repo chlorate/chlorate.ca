@@ -1,0 +1,31 @@
+@import "~bootstrap-theme/src/pre-bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+@import "~bootstrap-theme/src/post-bootstrap";
+
+@import "styles/error";
+@import "styles/fonts";
+@import "styles/home";
+@import "styles/split-icons";
+
+.page-input-display {
+  @import "~input-display/src/index.scss";
+}
