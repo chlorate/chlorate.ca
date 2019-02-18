@@ -7,6 +7,14 @@
   }
 
   .row {
-    width: 36em;
+    flex: 1;
+    max-width: 36em;
+  }
+
+  .col-contact {
+    @include media-breakpoint-up(sm) {
+      padding-top: $headings-line-height * $h1-font-size +
+        $headings-margin-bottom;
+    }
   }
 }
