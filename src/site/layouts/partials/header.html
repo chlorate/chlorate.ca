@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="{{ if .Params.lang }}{{ .Params.lang }}{{ else }}en-CA{{ end }}" {{ if .Params.class }}class="{{ .Params.class }}"{{ end }}>
-	<head>
-		<meta charset="utf-8">
-		{{ if .Params.description }}
-			<meta name="description" content="{{ .Params.description }}">
-		{{ end }}
-		<meta name="theme-color" content="#16181b">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>{{ .Title }}</title>
-		<link rel="stylesheet" href="{{ index .Site.Data.static "styles.css" }}">
-	</head>
-	<body>
-		{{ if .Params.script }}
-			<noscript>
-				<div class="alert alert-danger text-center m-3" role="alert">
-					JavaScript must be enabled.
-				</div>
-			</noscript>
-		{{ end }}
+<!doctype html>
+<html
+  lang="{{ .Params.lang | default "en-CA" }}"
+  {{ if .Params.class }}class="{{ .Params.class }}"{{ end }}
+>
+  <head>
+    <meta charset="utf-8" />
+    {{ if .Params.description }}
+      <meta name="description" content="{{ .Params.description }}" />
+    {{ end }}
+    <meta name="theme-color" content="#16181b" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="{{ index .Site.Data.static "styles.css" }}">
+  </head>
+  <body>
+    {{ if .Params.script }}
+      <noscript>
+        <div class="alert alert-danger text-center m-3" role="alert">
+          JavaScript must be enabled.
+        </div>
+      </noscript>
+    {{ end }}

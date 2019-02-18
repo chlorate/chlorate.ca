@@ -3,17 +3,19 @@
 {{ partial "header.html" . }}
 
 <div class="container my-3">
-	<div class="card">
-		<div class="card-body text-center">
-			<h1>{{ .Params.statusCode }}</h1>
-			<p class="m-0">
-				{{ .Params.statusText }}
-			</p>
-		</div>
-		<div class="card-footer">
-			<a class="btn btn-link btn-block" href="/">Home</a>
-		</div>
-	</div>
+  <div class="card">
+    <div class="card-body text-center">
+      <h1>
+        {{ .Params.statusCode }}
+      </h1>
+      <p class="m-0">
+        {{ .Params.statusText }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <a class="btn btn-link btn-block" href="/">Home</a>
+    </div>
+  </div>
 </div>
 
 {{ partial "footer.html" . }}

@@ -1,20 +1,26 @@
 <div class="card mb-3">
-	<h2 class="card-header h3 mb-0">
-		{{ .Params.name }}
-	</h2>
-	<div class="card-body">
-		<p class="card-text {{ .Params.class }}">
-			ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-			The quick brown fox jumps over the lazy dog.<br>
-			0123456789
-		</p>
-		<p class="card-text">
-			<a class="btn btn-primary" href="https://github.com/chlorate/{{ .Params.repository }}/releases/download/v{{ .Params.version }}/{{ .Params.repository }}.ttf">
-				Download
-			</a>
-			<a class="btn btn-link" href="https://github.com/chlorate/{{ .Params.repository }}">
-				Repository
-			</a>
-		</p>
-	</div>
+  <h2 class="card-header h3 mb-0">
+    {{ .Params.name }}
+  </h2>
+  <div class="card-body">
+    <p class="card-text {{ .Params.class }}">
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+      The quick brown fox jumps over the lazy dog.<br />
+      0123456789
+    </p>
+    <p class="card-text">
+      <a
+        class="btn btn-primary"
+        href="https://github.com/chlorate/{{ .Params.repository }}/releases/download/v{{ .Params.version }}/{{ .Params.repository }}.ttf"
+      >
+        Download
+      </a>
+      <a
+        class="btn btn-link"
+        href="https://github.com/chlorate/{{ .Params.repository }}"
+      >
+        Repository
+      </a>
+    </p>
+  </div>
 </div>
