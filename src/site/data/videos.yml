@@ -95,3 +95,16 @@ scores:
       url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrlOvImKX9ALDZIQWsfeEOW
     - name: Tetris Party
       url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpN7pJYfhkMjlRq4QnZvg8T
+
+gaming:
+  playlists:
+    - name: Miscellaneous
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTronEDtfOnh8nYxqhe5sQ9n
+      description: Bugs, crashes, and version differences.
+      spaced: true
+    - name: Preservation
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLToCT207MbIoWMdBGlPj7zWu
+      description: Mega Man 9 and 10 Wii leaderboards prior to shutdown.
+      spaced: true
+    - name: Stream VOD archive
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrEqjrQwZ4sAelWaF0WnDJO
