@@ -1,46 +1,54 @@
-projects:
-  - name: Fonts
-    url: /fonts
-  - name: Input display
-    url: /input-display
-  - name: Split icons
-    url: /split-icons
-    spaced: true
-  - name: GitHub
-    url: https://github.com/chlorate
+cards:
+  - title: Projects
+    pages:
+      - name: Fonts
+        url: /fonts
+      - name: Input display
+        url: /input-display
+      - name: Split icons
+        url: /split-icons
+    profiles:
+      - name: GitHub
+        url: https://github.com/chlorate
 
-speedruns:
-  - name: Personal bests
-    url: /speedruns/personal-bests
-  - name: Best splits
-    url: /speedruns/best-splits
-  - name: Notes (Google Drive)
-    url: https://drive.google.com/open?id=0BzePBmKh8aI-VERfOFRFVGdfSHM
-  - name: Videos
-    url: /speedruns/videos
-    spaced: true
-  - name: Mega Man Leaderboards
-    url: https://megamanleaderboards.net/index.php?page=runner&name=Chlorate
-  - name: SpeedRunsLive
-    url: http://www.speedrunslive.com/profiles/#!/chlorate/1
-  - name: Speedrun.com
-    url: https://speedrun.com/user/Chlorate
+  - title: Speedruns
+    pages:
+      - name: Personal bests
+        url: /speedruns/personal-bests
+      - name: Best splits
+        url: /speedruns/best-splits
+      - name: Notes (Google Drive)
+        url: https://drive.google.com/open?id=0BzePBmKh8aI-VERfOFRFVGdfSHM
+      - name: Videos
+        url: /speedruns/videos
+    profiles:
+      - name: Mega Man Leaderboards
+        url: https://megamanleaderboards.net/index.php?page=runner&name=Chlorate
+      - name: SpeedRunsLive
+        url: http://www.speedrunslive.com/profiles/#!/chlorate/1
+      - name: Speedrun.com
+        url: https://speedrun.com/user/Chlorate
 
-scores:
-  - name: Personal bests
-    url: /scores/personal-bests
-  - name: Videos
-    url: /scores/videos
-    spaced: true
-  - name: Cyberscore
-    url: https://cyberscore.me.uk/user/16430
+  - title: Scores
+    pages:
+      - name: Personal bests
+        url: /scores/personal-bests
+      - name: Videos
+        url: /scores/videos
+    profiles:
+      - name: Cyberscore
+        url: https://cyberscore.me.uk/user/16430
 
-gaming:
-  - name: completionist.me
-    url: https://completionist.me/user/891eba42-b2fa-4b61-af6b-c7234bde835f
-  - name: HowLongToBeat
-    url: https://howlongtobeat.com/user.php?n=Chlorate
-  - name: Retro Achievements
-    url: https://retroachievements.org/user/Chlorate
-  - name: Steam
-    url: https://steamcommunity.com/id/chlorate_
+  - title: Gaming
+    pages:
+      - name: Videos
+        url: /gaming/videos
+    profiles:
+      - name: completionist.me
+        url: https://completionist.me/user/891eba42-b2fa-4b61-af6b-c7234bde835f
+      - name: HowLongToBeat
+        url: https://howlongtobeat.com/user.php?n=Chlorate
+      - name: Retro Achievements
+        url: https://retroachievements.org/user/Chlorate
+      - name: Steam
+        url: https://steamcommunity.com/id/chlorate_

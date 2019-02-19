@@ -1,3 +1,70 @@
 {{ partial "header.html" . }}
-{{ .Content }}
+
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-auto col-contact">
+      <div class="text-center mb-2">
+        <img
+          class="mb-2"
+          src="//s.gravatar.com/avatar/4d45b49f52d45c368cbbaeef413b02f6?s=200"
+          alt="Avatar"
+          width="200"
+          height="200"
+        />
+      </div>
+
+      <h1 class="d-sm-none text-center">
+        Chlorate
+      </h1>
+
+      <div class="card mb-2">
+        <div class="card-body">
+          <ul class="card-text list-unstyled">
+            <li>
+              Twitch:
+              <a href="https://twitch.tv/chlorate_">chlorate_</a>
+            </li>
+            <li>
+              YouTube:
+              <a href="https://youtube.com/user/chlorate1">chlorate1</a>
+            </li>
+            <li>
+              Twitter:
+              <a href="https://twitter.com/chlorate_">chlorate_</a>
+            </li>
+            <li>
+              Discord:
+              <span class="text-muted">Chlorate#9541</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <h1 class="d-none d-sm-block text-center">
+        Chlorate
+      </h1>
+
+      {{ range $card := .Site.Data.home.cards }}
+        <div class="card mb-2">
+          <h2 class="card-header h5 mb-0">
+            {{ $card.title }}
+          </h2>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md">
+                {{ partial "link-list.html" $card.pages }}
+              </div>
+              <div class="col-md-auto col-profiles mt-2 mt-md-0">
+                {{ partial "link-list.html" $card.profiles }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
 {{ partial "footer.html" . }}

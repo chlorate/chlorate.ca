@@ -3,31 +3,4 @@
   {{ $data = index $data $key }}
 {{ end }}
 
-<ul class="card-text list-unstyled">
-  {{ range $link := $data }}
-    <li {{ if $link.spaced }}class="mb-2"{{ end }}>
-      {{ if or $link.date $link.description }}
-        <div
-          {{ if $link.date }}class="d-flex align-items-center justify-content-between"{{ end }}
-        >
-          <a href="{{ $link.url }}">{{ $link.name }}</a>
-          {{ if $link.date }}
-            <span class="badge badge-secondary d-none d-sm-inline ml-2">
-              {{ $link.date }}
-            </span>
-          {{ end }}
-        </div>
-        {{ if $link.date }}
-          <div>
-            <span class="badge badge-secondary d-sm-none">
-              {{ $link.date }}
-            </span>
-          </div>
-        {{ end }}
-        {{ $link.description | markdownify }}
-      {{ else }}
-        <a href="{{ $link.url }}">{{ $link.name }}</a>
-      {{ end }}
-    </li>
-  {{ end }}
-</ul>
+{{ partial "link-list.html" $data }}
