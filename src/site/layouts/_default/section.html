@@ -5,18 +5,22 @@
     {{ .Title }}
   </h1>
 
-  <div class="card card-pages mb-3">
-    <h2 class="card-header h3 mb-0">
-      Pages
-    </h2>
-    <div class="card-body">
-      <ul class="card-text list-unstyled">
-        {{ range $page := .Pages }}
-          <li>
-            <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
-          </li>
-        {{ end }}
-      </ul>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <div class="card card-pages mb-3">
+        <h2 class="card-header h3 mb-0">
+          Pages
+        </h2>
+        <div class="card-body">
+          <ul class="card-text list-unstyled">
+            {{ range $page := .Pages }}
+              <li>
+                <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
