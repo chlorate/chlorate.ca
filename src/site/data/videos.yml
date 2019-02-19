@@ -72,3 +72,26 @@ speedruns:
       url: https://www.youtube.com/watch?v=JQeVU8ppW-g
       date: 2014-08-16
       description: Mega Man 10
+
+scores:
+  playlists:
+    - name: Azure Striker Gunvolt
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrGtwJsymXovXV90LtbrZJ5
+    - name: INK
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpCFPFXMBLPaIXBjKXgxQOo
+    - name: Mega Man 9
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrOPr0dr_ArCc0jlNS-2ePl
+    - name: Mega Man 10
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrU63yPOmdzcSNy9XvLbMuq
+    - name: Mega Man Legacy Collection
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTo1d9SRNMlc2OWnzfcVXbuj
+    - name: Mega Man Legacy Collection 2
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTo2dTU_W75vOC8v6l75wJnf
+    - name: "Mega Man X: Command Mission"
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTo2vNy_3Q2lmpMduUdwze77
+    - name: Mighty Gunvolt
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTre0iowDDPwM712Yrug_jXz
+    - name: Mighty No. 9
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrlOvImKX9ALDZIQWsfeEOW
+    - name: Tetris Party
+      url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTpN7pJYfhkMjlRq4QnZvg8T
