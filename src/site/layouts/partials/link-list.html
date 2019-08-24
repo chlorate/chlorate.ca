@@ -14,7 +14,7 @@
       {{ if $link.date }}
         <div class="d-flex align-items-start justify-content-between">
           <strong>{{ template "name" $link }}</strong>
-          <span class="d-none d-sm-inline flex-shrink-0 ml-2">{{ $link.date }}</span>
+          <span class="d-none d-sm-inline flex-shrink-0 ml-2 text-muted">{{ $link.date }}</span>
         </div>
       {{ else if or $link.bold $link.parts $link.description }}
         <strong class="d-block">
@@ -26,7 +26,7 @@
 
       {{ if $link.parts }}
         <div>
-          Parts:
+          <strong>Parts:</strong>
           {{ range $i, $url := $link.parts }}
             <a href="{{ $url }}">({{ add $i 1 }})</a>
           {{ end }}
@@ -34,7 +34,7 @@
       {{ end }}
 
       {{ if $link.date }}
-        <div class="d-sm-none">
+        <div class="d-sm-none text-muted">
           {{ $link.date }}
         </div>
       {{ end }}
