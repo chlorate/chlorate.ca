@@ -1,0 +1,72 @@
+{{ define "time" }}
+  {{ if eq .category.primary "Game time" }}
+    {{ .pb.gameTime }}
+  {{ else }}
+    {{ .pb.realTime }}
+  {{ end }}
+{{ end }}
+
+{{ range $series := .Site.Data.speedruns.series }}
+  {{ if $series.name }}
+    <h2 class="h4 mt-4">
+      {{ $series.name }}
+    </h2>
+  {{ end }}
+
+  <div class="table-responsive-lg">
+    <table class="table table-bordered table-hover table-sm table-speedruns">
+      <thead>
+        <tr>
+          <th class="cell-game">Game</th>
+          <th class="cell-category">Category</th>
+          <th class="cell-time text-right">Time</th>
+          <th class="cell-version">Version</th>
+          <th class="cell-date">Date</th>
+        </tr>
+      </thead>
+      {{ range $game := $series.games }}
+        <tbody>
+          {{ range $group := $game.groups }}
+            {{ range $i, $category := $group.categories }}
+              {{ $pb := index $category.runs 0 }}
+              <tr>
+                {{ if not $i }}
+                  <td
+                    class="cell-tbody-hover"
+                    rowspan="{{ len $group.categories }}"
+                  >
+                    {{ $game.name }}
+                  </td>
+                {{ end }}
+                <td>
+                  {{ $category.name }}
+                </td>
+                <td class="position-relative text-right">
+                  {{ if $pb.video }}
+                    <a class="stretched-link" href="{{ $pb.video }}">
+                      {{ template "time" (dict "category" $category "pb" $pb ) }}
+                    </a>
+                  {{ else }}
+                    {{ template "time" (dict "category" $category "pb" $pb) }}
+                  {{ end }}
+                </td>
+                <td class="text-nowrap">
+                  {{ partial "platform.html" $pb.platform }}
+                  {{ if $pb.emulator }}
+                    <span class="badge badge-warning" title="Emulator: {{ $pb.emulator }}">Emu</span>
+                  {{ end }}
+                  {{ if $pb.version }}
+                    <span class="badge badge-secondary">{{ $pb.version }}</span>
+                  {{ end }}
+                </td>
+                <td class="text-nowrap">
+                  {{ $pb.date }}
+                </td>
+              </tr>
+            {{ end }}
+          {{ end }}
+        </tbody>
+      {{ end }}
+    </table>
+  </div>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ $class := "" }}
+
+{{ if hasPrefix . "NES" }}
+  {{ $class = "platform-nes" }}
+{{ else if hasPrefix . "SNES" }}
+  {{ $class = "platform-snes" }}
+{{ else if eq . "Wii" }}
+  {{ $class = "platform-wii" }}
+{{ end }}
+
+{{ if $class }}
+  <span class="{{ $class }}">{{ . }}</span>
+{{ else }}
+  {{ . }}
+{{ end }}

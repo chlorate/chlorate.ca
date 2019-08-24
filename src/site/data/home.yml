@@ -14,7 +14,7 @@ cards:
   - title: Speedruns
     pages:
       - name: Personal bests
-        url: /speedruns/personal-bests
+        url: /speedruns
       - name: Best splits
         url: /speedruns/best-splits
       - name: Notes (Google Drive)

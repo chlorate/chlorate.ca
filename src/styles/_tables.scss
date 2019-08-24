@@ -1,0 +1,30 @@
+tbody {
+  @include hover {
+    .cell-tbody-hover {
+      background-color: $table-hover-bg;
+    }
+  }
+}
+
+.table-speedruns {
+  .cell-game {
+    min-width: 12em;
+    width: 12em;
+  }
+
+  .cell-category {
+    min-width: 12em;
+  }
+
+  .cell-time {
+    width: 7em;
+  }
+
+  .cell-version {
+    width: 8.5em;
+  }
+
+  .cell-date {
+    width: 1px;
+  }
+}
