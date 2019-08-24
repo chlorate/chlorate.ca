@@ -33,6 +33,40 @@ speedruns:
         url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTro3FbhgUVvgIIVW6l-YZvX
 
   marathons:
+    - name: "Classic Mega Man Relay Race #10"
+      class: mb-2
+      parts:
+        - https://www.twitch.tv/videos/433006338
+        - https://www.twitch.tv/videos/433030074
+        - https://www.twitch.tv/videos/433035022
+        - https://www.twitch.tv/videos/433060943
+        - https://www.twitch.tv/videos/433180048
+      date: 2019-06-01
+      description: Mega Man 9 and 10
+    - name: "Classic Mega Man Relay Race #10 - Team draft"
+      class: mb-2
+      url: https://www.twitch.tv/videos/430935484
+      date: 2019-05-27
+    - name: "Classic Mega Man Relay Race #10 - Qualifier week 3"
+      class: mb-2
+      url: https://www.twitch.tv/videos/430936031
+      date: 2019-05-18
+      description: Mega Man 9 and 10
+    - name: "Classic Mega Man Relay Race #10 - Qualifier week 2"
+      class: mb-2
+      url: https://www.twitch.tv/videos/423749754
+      date: 2019-05-11
+      description: Mega Man 9 and 10
+    # Missing VOD:
+    # - name: "Classic Mega Man Relay Race #10 - Qualifier week 1, day 2"
+    #   class: mb-2
+    #   date: 2019-05-05
+    #   description: Mega Man 9 and 10
+    - name: "Classic Mega Man Relay Race #10 - Qualifier week 1, day 1"
+      class: mb-2
+      url: https://www.twitch.tv/videos/420437520
+      date: 2019-05-04
+      description: Mega Man 1, 2, and 3
     - name: "Classic Mega Man Relay Race #9"
       class: mb-2
       url: https://www.youtube.com/watch?v=cqvmPFBlsPA
