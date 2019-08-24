@@ -1,8 +1,10 @@
 HUGO = hugo --source src/site
 JASMINE = node_modules/.bin/jasmine
 NPM_CHECK = node_modules/.bin/npm-check
+PB = node src/pb/main.js
 PRETTIER = node_modules/.bin/prettier
 S3CMD = s3cmd
+TSC = node_modules/.bin/tsc
 WEBPACK = node_modules/.bin/webpack
 
 # Cache static files for 30 days.
@@ -29,10 +31,17 @@ S3CMD_SYNC_PAGES = $(S3CMD) sync \
 	dist/
 
 .PHONY: build
-build: node_modules
+build: build-pb build-webpack
+	$(HUGO) --minify
+
+.PHONY: build-pb
+build-pb: src/pb/main.js
+	$(PB) "https://docs.google.com/spreadsheets/d/e/2PACX-1vQh8WejDYgdyaj-yKQ33pt3n5lrvBkWjquQ5AH3DUQBfyZ9wP7B6Ojgs_UdosZktv_iQQK-3T3rce0m/pub?gid=0&single=true&output=csv" src/site/data/speedruns.json
+
+.PHONY: build-webpack
+build-webpack: node_modules
 	$(WEBPACK) -p
 	rm src/site/static/static/styles.*.js
-	$(HUGO) --minify
 
 .PHONY: test
 test: node_modules
@@ -48,15 +57,16 @@ watch-webpack: node_modules
 
 .PHONY: format
 format: node_modules
-	$(PRETTIER) --write {*,.circleci/**/*,src/**/*}.{js,json,md,scss,yml}
+	$(PRETTIER) --write {*,.circleci/**/*,src/**/*}.{js,json,md,scss,ts,yml}
 
 .PHONY: clean
 clean: 
-	rm --recursive --force dist src/site/data/static.json src/site/static/static
+	-rm src/site/data/static.json src/pb/*.js
+	-rm --recursive dist src/site/static/static
 
 .PHONY: clean-deps
 clean-deps:
-	rm --recursive --force node_modules
+	-rm --recursive node_modules
 
 .PHONY: deploy-stage
 deploy-stage:
@@ -80,3 +90,6 @@ node_modules: package.json
 
 src/site/data/static.json: node_modules
 	$(WEBPACK) -d
+
+src/pb/main.js: node_modules src/tsconfig.json $(wildcard src/pb/*.ts)
+	$(TSC) --project src

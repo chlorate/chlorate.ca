@@ -1,5 +1,6 @@
 dist
 junit
 node_modules
-src/site/data/static.json
+src/pb/*.js
+src/site/data/*.json
 src/site/static/static
