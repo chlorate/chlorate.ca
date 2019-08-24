@@ -1,30 +1,45 @@
 {{ $data := . }}
 
-<ul class="card-text list-unstyled">
+{{ define "name" }}
+  {{ if .url }}
+    <a href="{{ .url }}">{{ .name }}</a>
+  {{ else }}
+    {{ .name }}
+  {{ end }}
+{{ end }}
+
+<ul class="list-unstyled">
   {{ range $link := $data }}
-    <li {{ if $link.spaced }}class="mb-2"{{ end }}>
-      {{ if or $link.date $link.description }}
-        <div
-          {{ if $link.date }}class="d-flex align-items-center justify-content-between"{{ end }}
-        >
-          <a href="{{ $link.url }}">{{ $link.name }}</a>
-          {{ if $link.date }}
-            <span class="badge badge-secondary d-none d-sm-inline ml-2">
-              {{ $link.date }}
-            </span>
+    <li {{ if $link.class }}class="{{ $link.class }}"{{ end }}>
+      {{ if $link.date }}
+        <div class="d-flex align-items-start justify-content-between">
+          <strong>{{ template "name" $link }}</strong>
+          <span class="d-none d-sm-inline flex-shrink-0 ml-2">{{ $link.date }}</span>
+        </div>
+      {{ else if or $link.bold $link.parts $link.description }}
+        <strong class="d-block">
+          {{ template "name" $link }}
+        </strong>
+      {{ else }}
+        {{ template "name" $link }}
+      {{ end }}
+
+      {{ if $link.parts }}
+        <div>
+          Parts:
+          {{ range $i, $url := $link.parts }}
+            <a href="{{ $url }}">({{ add $i 1 }})</a>
           {{ end }}
         </div>
-        {{ if $link.date }}
-          <div>
-            <span class="badge badge-secondary d-sm-none">
-              {{ $link.date }}
-            </span>
-          </div>
-        {{ end }}
-        {{ $link.description | markdownify }}
-      {{ else }}
-        <a href="{{ $link.url }}">{{ $link.name }}</a>
       {{ end }}
+
+      {{ if $link.date }}
+        <div class="d-sm-none">
+          {{ $link.date }}
+        </div>
+      {{ end }}
+
+      {{ $link.description | markdownify }}
     </li>
   {{ end }}
 </ul>

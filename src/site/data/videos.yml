@@ -34,40 +34,40 @@ speedruns:
 
   marathons:
     - name: "Classic Mega Man Relay Race #9"
+      class: mb-2
       url: https://www.youtube.com/watch?v=cqvmPFBlsPA
       date: 2018-02-24
       description: Mega Man 10
-      spaced: true
     - name: "Classic Mega Man Relay Race #8"
+      class: mb-2
       url: https://www.twitch.tv/videos/173543908
       date: 2017-09-09
       description: Mega Man 10
-      spaced: true
     - name: "RaindropDry Fundraiser"
+      class: mb-2
       url: https://www.twitch.tv/videos/110933162
       date: 2016-12-17
       description: Mega Man 10 Any% and Special Stage races with Ajarmar
-      spaced: true
     - name: "Classic Mega Man Relay Race #7"
+      class: mb-2
       url: https://www.twitch.tv/videos/100865021
       date: 2016-11-12
       description: Mega Man 9 and 10
-      spaced: true
     - name: "Classic Mega Man Relay Race #6"
+      class: mb-2
       url: https://www.twitch.tv/videos/61110932
       date: 2016-04-16
       description: Mega Man 10
-      spaced: true
     - name: "JRTA Marathon 2"
+      class: mb-2
       url: https://www.youtube.com/watch?v=NKa22_AqCJU
       date: 2015-11-07
       description: Mega Man 10 Any% and Special Stage races with Ajarmar, cleartonic, and usedpizza
-      spaced: true
     - name: "Classic Mega Man Relay Race #4"
+      class: mb-2
       url: https://www.youtube.com/watch?v=bC9Mx8897e4
       date: 2014-12-06
       description: Mega Man 10
-      spaced: true
     - name: "Classic Mega Man Relay Race #3"
       url: https://www.youtube.com/watch?v=JQeVU8ppW-g
       date: 2014-08-16
@@ -99,12 +99,13 @@ scores:
 gaming:
   playlists:
     - name: Miscellaneous
+      class: mb-2
       url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTronEDtfOnh8nYxqhe5sQ9n
       description: Bugs, crashes, and version differences.
-      spaced: true
     - name: Preservation
+      class: mb-2
       url: https://www.youtube.com/playlist?list=PLP0rqYd2BLToCT207MbIoWMdBGlPj7zWu
       description: Mega Man 9 and 10 Wii leaderboards prior to shutdown.
-      spaced: true
     - name: Stream VOD archive
+      bold: true
       url: https://www.youtube.com/playlist?list=PLP0rqYd2BLTrEqjrQwZ4sAelWaF0WnDJO
