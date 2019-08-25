@@ -1,3 +1,71 @@
+@mixin table-collapse {
+  border: 0;
+
+  thead {
+    display: none;
+  }
+
+  tbody {
+    display: block;
+
+    &:not(:last-child) {
+      margin-bottom: map-get($spacers, 3);
+    }
+  }
+
+  tbody + tbody {
+    border: 0;
+  }
+
+  tr {
+    display: block;
+
+    &:not(:last-child) {
+      margin-bottom: map-get($spacers, 2);
+    }
+  }
+
+  td {
+    border: 0;
+    display: block;
+    padding: 0;
+  }
+
+  td[data-label] {
+    text-align: right;
+
+    &::before {
+      content: attr(data-label) ":";
+      float: left;
+      margin-right: map-get($spacers, 2);
+    }
+  }
+
+  tbody:hover .cell-tbody-hover,
+  &.table-hover tbody tr:hover {
+    background: transparent;
+  }
+
+  &:not(.table-borderless) tbody:last-child tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .cell-collapse-h5,
+  .cell-collapse-h6 {
+    margin-bottom: $headings-margin-bottom;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+  }
+
+  .cell-collapse-h5 {
+    @include font-size($h5-font-size);
+  }
+
+  .cell-collapse-h6 {
+    @include font-size($h6-font-size);
+  }
+}
+
 tbody {
   @include hover {
     .cell-tbody-hover {
@@ -8,12 +76,11 @@ tbody {
 
 .table-speedruns {
   .cell-game {
-    min-width: 12em;
     width: 12em;
   }
 
   .cell-category {
-    min-width: 12em;
+    width: 12em;
   }
 
   .cell-time {
@@ -26,5 +93,9 @@ tbody {
 
   .cell-date {
     width: 1px;
+  }
+
+  @media (max-width: 625px) {
+    @include table-collapse;
   }
 }
